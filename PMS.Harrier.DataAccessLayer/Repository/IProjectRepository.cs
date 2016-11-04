@@ -8,7 +8,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository
     {
         IEnumerable<Project> GetAllProjects();
         void GetProjectsWithProjectManagers();
-        
 
+        Project GetProjectByName(string name);
     }
 }

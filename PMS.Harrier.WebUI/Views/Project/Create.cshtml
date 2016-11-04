@@ -1,0 +1,38 @@
+﻿@model PMS.Harrier.DataAccessLayer.Models.Project
+
+@{
+    ViewBag.Title = "Nowy projekt";
+}
+
+<h2>Nowy projekt</h2>
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <h4>Podaj wymagane dane</h4>
+    <hr/>
+    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+
+    <div class="form-group">
+        @Html.LabelFor(p => p.Name, new {@class = "col-md-2 control-label"})
+        <div class="col-md-10">
+            @Html.EditorFor(p => p.Name)
+            @Html.ValidationMessageFor(p => p.Name, "", new {@class = "text-danger"})
+        </div>
+    </div>
+
+    @*<div class="form-group">
+        @Html.LabelFor(p => p.CreationDateTime)
+        <div class="col-md-10">
+            @Html.EditorFor(p => p.CreationDateTime)
+            @Html.ValidationMessageFor(p=> p.CreationDateTime)
+        </div>
+    </div>*@
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Zatwierdź" class="btn btn-default"/>
+        </div>
+    </div>
+
+    
+}

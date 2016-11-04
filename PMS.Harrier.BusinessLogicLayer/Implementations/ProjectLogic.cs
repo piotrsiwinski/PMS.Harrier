@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.UnitOfWork;
@@ -17,6 +18,20 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
         public IEnumerable<Project> GetAllProjects()
         {
             return _unitOfWork.Projects.GetAllProjects();
+        }
+
+        public void AddNewProject(Project project)
+        {
+            if(project == null)
+                throw new ArgumentNullException(nameof(project));
+            _unitOfWork.Projects.Add(project);
+            _unitOfWork.Complete();
+        }
+
+        public bool IsProjectNameAvailable(string name)
+        {
+            var result = _unitOfWork.Projects.GetProjectByName(name);
+            return result == null;
         }
     }
 }

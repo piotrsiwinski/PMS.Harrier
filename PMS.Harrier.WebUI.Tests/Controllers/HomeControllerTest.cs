@@ -12,7 +12,7 @@ namespace PMS.Harrier.WebUI.Tests.Controllers
     [TestClass]
     public class HomeControllerTest
     {
-        [TestMethod]
+       /* [TestMethod]
         public void Index()
         {
             // Arrange
@@ -49,6 +49,6 @@ namespace PMS.Harrier.WebUI.Tests.Controllers
 
             // Assert
             Assert.IsNotNull(result);
-        }
+        }*/
     }
 }

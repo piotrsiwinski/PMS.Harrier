@@ -24,6 +24,12 @@ namespace PMS.Harrier.DataAccessLayer.Repository
             throw new System.NotImplementedException();
         }
 
+        public Project GetProjectByName(string name)
+        {
+            var result = EfDbContext.Projects.FirstOrDefault(p => p.Name == name);
+            return result;
+        }
+
         public EfDbContext EfDbContext => Context as EfDbContext;
     }
 }

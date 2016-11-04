@@ -10,6 +10,7 @@
     <tr>
         <th>Nazwa projektu</th>
         <th>Data utworzenia</th>
+        <th>Operacje</th>
     </tr>
     </thead>
     <tbody>
@@ -18,7 +19,14 @@
         <tr>
             <td>@p.Name</td>
             <td>@p.CreationDateTime</td>
+            <td>
+                @Html.ActionLink("Szczegóły", "Index", null, new {@class = "btn btn-info"})
+                @Html.ActionLink("Edytuj", "Index", null, new {@class = "btn btn-primary"})
+                @Html.ActionLink("Usuń", "Index", null, new {@class = "btn btn-danger"})
+            </td>
         </tr>
     }
     </tbody>
 </table>
+
+@Html.ActionLink("Dodaj nowy", "Create", null, new {@class = "btn btn-default"})
