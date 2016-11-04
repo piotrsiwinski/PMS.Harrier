@@ -1,29 +1,29 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity;
+using System.Linq;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
+using PMS.Harrier.DataAccessLayer.Repository.Abstract;
 
 namespace PMS.Harrier.DataAccessLayer.Repository
 {
-    public class ProjectRepository : IProjectRepository
+    public class ProjectRepository : Repository<Project>, IProjectRepository
     {
-        private EfDbContext _context = new EfDbContext();
-        public IEnumerable<Project> Projects => _context.Projects;
-
-        public void AddProject(Project project)
+        public ProjectRepository(DbContext context) : base(context)
         {
-            _context.Projects.Add(project);
-            _context.SaveChanges();
         }
 
-        public Project DeleteProject(int projectId)
+
+        public IEnumerable<Project> GetAllProjects()
         {
-            var dbEntry = _context.Projects.Find(projectId);
-            if (dbEntry != null)
-            {
-                _context.Projects.Remove(dbEntry);
-                _context.SaveChanges();
-            }
-            return dbEntry;
+            return EfDbContext.Projects.ToList();
         }
+
+        public void GetProjectsWithProjectManagers()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public EfDbContext EfDbContext => Context as EfDbContext;
     }
 }

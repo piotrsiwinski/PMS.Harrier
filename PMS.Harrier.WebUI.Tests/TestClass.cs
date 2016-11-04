@@ -1,6 +1,8 @@
 ﻿using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Repository;
+using PMS.Harrier.DataAccessLayer.UnitOfWork;
 
 namespace PMS.Harrier.WebUI.Tests
 {
@@ -10,8 +12,8 @@ namespace PMS.Harrier.WebUI.Tests
         [TestMethod]
         public void Test()
         {
-            IProjectRepository repository = new ProjectRepository();
-            var projects = repository.Projects.ToList();
+            IUnitOfWork unitOfWork = new UnitOfWork(new EfDbContext());
+            var result = unitOfWork.Projects.GetAllProjects();
 
         }
     }

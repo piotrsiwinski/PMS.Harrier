@@ -40,10 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abstract\IProjectLogic.cs" />
+    <Compile Include="Implementations\ProjectLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Abstract\" />
+    <ProjectReference Include="..\PMS.Harrier.DataAccessLayer\PMS.Harrier.DataAccessLayer.csproj">
+      <Project>{E3B2504B-1ED3-4DEF-BE60-2AACD824C2E5}</Project>
+      <Name>PMS.Harrier.DataAccessLayer</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

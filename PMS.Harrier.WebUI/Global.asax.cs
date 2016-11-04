@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using Autofac.Integration.Mvc;
+using PMS.Harrier.WebUI.DependencyInjection;
 
 namespace PMS.Harrier.WebUI
 {
@@ -16,6 +18,7 @@ namespace PMS.Harrier.WebUI
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            DependencyResolver.SetResolver(new AutofacDependencyResolver(AutofacResolver.GetContainer()));
         }
     }
 }

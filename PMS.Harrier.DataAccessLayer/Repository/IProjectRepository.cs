@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using PMS.Harrier.DataAccessLayer.Models;
+using PMS.Harrier.DataAccessLayer.Repository.Abstract;
 
 namespace PMS.Harrier.DataAccessLayer.Repository
 {
-    public interface IProjectRepository
+    public interface IProjectRepository : IRepository<Project>
     {
-        IEnumerable<Project> Projects { get;}
-        void AddProject(Project project);
-        Project DeleteProject(int projectId);
+        IEnumerable<Project> GetAllProjects();
+        void GetProjectsWithProjectManagers();
+        
 
     }
 }
