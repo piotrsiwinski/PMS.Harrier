@@ -7,27 +7,20 @@ using PMS.Harrier.BusinessLogicLayer.Abstract;
 
 namespace PMS.Harrier.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class ProjectController : Controller
     {
         private IProjectLogic _projectLogic;
 
-        public HomeController(IProjectLogic projectLogic)
+        public ProjectController(IProjectLogic projectLogic)
         {
             _projectLogic = projectLogic;
         }
+
+        // GET: Project
         public ActionResult Index()
         {
-            return View();
-        }
-
-        public ActionResult About()
-        {
-            return View();
-        }
-
-        public ActionResult Contact()
-        {
-            return View();
+            var result = _projectLogic.GetAllProjects();
+            return View(result);
         }
     }
 }

@@ -1,0 +1,24 @@
+﻿@model System.Collections.Generic.IEnumerable<PMS.Harrier.DataAccessLayer.Models.Project>
+
+@{
+    ViewBag.Title = "Wszystkie projekty";
+}
+
+<h2>Podgląd projektów</h2>
+<table class="table table-striped table-bordered">
+    <thead>
+    <tr>
+        <th>Nazwa projektu</th>
+        <th>Data utworzenia</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var p in @Model)
+    {
+        <tr>
+            <td>@p.Name</td>
+            <td>@p.CreationDateTime</td>
+        </tr>
+    }
+    </tbody>
+</table>
