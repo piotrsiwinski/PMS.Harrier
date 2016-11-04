@@ -9,30 +9,28 @@
 {
     @Html.AntiForgeryToken()
     <h4>Podaj wymagane dane</h4>
-    <hr/>
-    @Html.ValidationSummary(true, "", new {@class = "text-danger"})
+    <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-    <div class="form-group">
-        @Html.LabelFor(p => p.Name, new {@class = "col-md-2 control-label"})
-        <div class="col-md-10">
-            @Html.EditorFor(p => p.Name)
-            @Html.ValidationMessageFor(p => p.Name, "", new {@class = "text-danger"})
+        <div class="form-group">
+            @Html.LabelFor(p => p.Name, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(p => p.Name, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(p => p.Name, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
-
-    @*<div class="form-group">
-        @Html.LabelFor(p => p.CreationDateTime)
-        <div class="col-md-10">
-            @Html.EditorFor(p => p.CreationDateTime)
-            @Html.ValidationMessageFor(p=> p.CreationDateTime)
+        
+        <div class="form-group">
+            @Html.LabelFor(p => p.Description, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(x => x.Description, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>*@
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Zatwierdź" class="btn btn-default"/>
+        
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Utwórz" class="btn btn-default" />
+            </div>
         </div>
-    </div>
-
-    
 }

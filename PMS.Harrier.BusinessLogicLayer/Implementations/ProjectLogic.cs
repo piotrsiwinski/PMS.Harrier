@@ -20,6 +20,11 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             return _unitOfWork.Projects.GetAllProjects();
         }
 
+        public Project GetProject(int id)
+        {
+            return _unitOfWork.Projects.Get(id);
+        }
+
         public void AddNewProject(Project project)
         {
             if(project == null)

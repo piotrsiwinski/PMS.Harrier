@@ -12,6 +12,10 @@ namespace PMS.Harrier.DataAccessLayer.Models.Metadata
         [Display(Name = "Nazwa projektu")]
         [Remote("ValidateProjectName", "Project")]
         public string Name { get; set; }
+        [Required]
+        [DataType(DataType.MultilineText)]
+        [Display(Name = "Opis")]
+        public string Description { get; set; }
         [DataType(DataType.Date)]
         public DateTime CreationDateTime { get; set; }
     }

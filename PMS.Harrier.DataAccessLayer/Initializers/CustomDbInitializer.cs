@@ -17,9 +17,9 @@ namespace PMS.Harrier.DataAccessLayer.Initializers
             
             List<Project> projects = new List<Project>
             {
-                new Project {Id = 1, Name = "Jira", CreationDateTime = DateTime.Today},
-                new Project {Id = 2, Name = "PMS", CreationDateTime = DateTime.Today},
-                new Project {Id = 3, Name = "Windows", CreationDateTime = DateTime.Today}
+                new Project {Id = 1, Name = "Jira", CreationDateTime = DateTime.Today, Description = "System do zarządzania projektami"},
+                new Project {Id = 2, Name = "PMS", CreationDateTime = DateTime.Today, Description = "Inny system do zarządzania projektami" },
+                new Project {Id = 3, Name = "Windows", CreationDateTime = DateTime.Today, Description = "System operacyjny"}
             };
 
             projects.ForEach(n => context.Projects.Add(n));

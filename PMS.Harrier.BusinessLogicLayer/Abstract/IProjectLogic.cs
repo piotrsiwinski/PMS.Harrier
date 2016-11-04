@@ -6,6 +6,7 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
     public interface IProjectLogic
     {
         IEnumerable<Project> GetAllProjects();
+        Project GetProject(int id_);
         void AddNewProject(Project project);
 
         bool IsProjectNameAvailable(string name);

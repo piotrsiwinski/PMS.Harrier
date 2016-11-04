@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
@@ -10,7 +11,7 @@ namespace PMS.Harrier.WebUI.Controllers
 {
     public class ProjectController : Controller
     {
-        private IProjectLogic _projectLogic;
+        private readonly IProjectLogic _projectLogic;
 
         public ProjectController(IProjectLogic projectLogic)
         {
@@ -43,7 +44,23 @@ namespace PMS.Harrier.WebUI.Controllers
         public JsonResult ValidateProjectName(string name)
         {
             var result = _projectLogic.IsProjectNameAvailable(name);
-            return result ? Json(true, JsonRequestBehavior.AllowGet) : Json("Projekt o takiej nazwie już istnieje", JsonRequestBehavior.AllowGet);
+            return result 
+                ? Json(true, JsonRequestBehavior.AllowGet) 
+                : Json("Projekt o takiej nazwie już istnieje", JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var project = _projectLogic.GetProject(id.Value);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+            return View(project);
         }
 
         
