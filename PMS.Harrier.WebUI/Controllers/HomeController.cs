@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace PMS.Harrier.Controllers
+namespace PMS.Harrier.WebUI.Controllers
 {
     public class HomeController : Controller
     {
@@ -15,7 +15,7 @@ namespace PMS.Harrier.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Harrier is a powerfull project management system";
+            ViewBag.Message = "Your application description page.";
 
             return View();
         }

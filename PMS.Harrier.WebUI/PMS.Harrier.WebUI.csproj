@@ -9,12 +9,12 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{745796F5-8E19-4DAD-B61D-7FF1C6B6BF48}</ProjectGuid>
+    <ProjectGuid>{D5A37913-3E0B-4F03-9B81-4A41C7477162}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>PMS.Harrier</RootNamespace>
-    <AssemblyName>PMS.Harrier</AssemblyName>
+    <RootNamespace>PMS.Harrier.WebUI</RootNamespace>
+    <AssemblyName>PMS.Harrier.WebUI</AssemblyName>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
     <MvcBuildViews>false</MvcBuildViews>
     <UseIISExpress>true</UseIISExpress>
@@ -295,9 +295,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>47109</DevelopmentServerPort>
+          <DevelopmentServerPort>48912</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:47109/</IISUrl>
+          <IISUrl>http://localhost:48336/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>
