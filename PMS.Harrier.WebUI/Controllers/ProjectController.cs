@@ -9,6 +9,7 @@ using PMS.Harrier.DataAccessLayer.Models;
 
 namespace PMS.Harrier.WebUI.Controllers
 {
+    [Authorize]
     public class ProjectController : Controller
     {
         private readonly IProjectLogic _projectLogic;
