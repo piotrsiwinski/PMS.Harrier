@@ -7,7 +7,7 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
 {
     public class EfDbContext : DbContext
     {
-        public EfDbContext() : base("PMS.Harrier.Dev")
+        public EfDbContext() : base("name=DefaultConnection")
         {
             Database.SetInitializer(new CustomDbInitializer());
         }
