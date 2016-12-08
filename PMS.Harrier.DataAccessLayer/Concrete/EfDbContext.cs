@@ -6,7 +6,7 @@ using PMS.Harrier.DataAccessLayer.Models;
 
 namespace PMS.Harrier.DataAccessLayer.Concrete
 {
-    public class EfDbContext : IdentityDbContext<ApplicationUser>
+    public class EfDbContext : IdentityDbContext<Account>
     {
         public EfDbContext() : base("name=DefaultConnection")
         {
@@ -24,7 +24,7 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
         }
 
         //public DbSet<Project> ProjectsOld { get; set; }
-        public virtual DbSet<Account> Accounts { get; set; }
+        //public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<AccountAddress> AccountAdresses { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Developer> Developers { get; set; }
