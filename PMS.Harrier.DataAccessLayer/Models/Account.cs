@@ -27,13 +27,9 @@ namespace PMS.Harrier.DataAccessLayer.Models
         }
 
         public int AccountId { get; set; }
-        public string Login { get; set; }
-        public string Password { get; set; }
-        public string Role { get; set; }
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Location { get; set; }
-        public string Email { get; set; }
         public short? IsActive { get; set; }
         public short? IsEnabled { get; set; }
         public string Country { get; set; }
