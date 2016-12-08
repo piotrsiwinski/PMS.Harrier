@@ -9,6 +9,7 @@
     <!--<link rel="stylesheet" type="text/css" href="~/Content/Site.css">
     <link rel="stylesheet" type="text/css" href="~/Content/simple-sidebar.css">
     <script src="~/Scripts/jquery.js"></script>-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <meta name="description" content="The description of my page" />
 </head>
 <body>
@@ -47,9 +48,9 @@
                                 <span class="icon-bar"></span>
                                 <span class="icon-bar"></span>
                             </button>
-                            <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Side Menu</a>
+                            <span><a href="#menu-toggle" id="menu-toggle"><i id="fontBurger" class="fa fa-bars" aria-hidden="true"></i></a></span>
                             @Html.ActionLink("Harrier", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-                     
+
                         </div>
                         <div class="navbar-collapse collapse">
                             <ul class="nav navbar-nav">
@@ -63,22 +64,22 @@
                 </div>
                 <div class="container body-content">
                     @RenderBody()
-                    <hr/>
+                    <hr />
                     <footer>
                         <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
                     </footer>
                 </div>
             </div>
         </div>
- </div>
-            @Scripts.Render("~/bundles/jquery")
-            @Scripts.Render("~/bundles/bootstrap")
-            @RenderSection("scripts", required: false)
-<script>
-    $("#menu-toggle").click(function(e) {
-        e.preventDefault();
-        $("#wrapper").toggleClass("toggled");
-    });
-</script>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
 </body>
 </html>

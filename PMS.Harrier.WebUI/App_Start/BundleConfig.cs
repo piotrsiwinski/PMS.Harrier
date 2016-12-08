@@ -26,7 +26,8 @@ namespace PMS.Harrier.WebUI
             bundles.Add(new StyleBundle("~/Content/css").Include(
                 "~/Content/bootstrap.css",
                 "~/Content/simple-sidebar.css",
-                "~/Content/Site.css"));
+                "~/Content/Site.css"
+                ));
         }
     }
 }

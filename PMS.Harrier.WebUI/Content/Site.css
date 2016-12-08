@@ -35,3 +35,8 @@ textarea {
 .navbar-inverse .navbar-brand {
     color: lightgray;
 }
+
+#fontBurger {
+    font-size: 34px !important;
+    margin-top: 8px !important;
+}
