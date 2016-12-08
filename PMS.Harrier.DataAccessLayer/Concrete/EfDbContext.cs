@@ -18,21 +18,19 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
             base.OnModelCreating(modelBuilder);
         }
 
-        public DbSet<Project> Projects { get; set; }
-
-        //new entities
-        public virtual DbSet<Account> Account { get; set; }
+        //public DbSet<Project> ProjectsOld { get; set; }
+        public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<AccountAddress> AccountAdresses { get; set; }
-        public virtual DbSet<Contact> Ccontact { get; set; }
-        public virtual DbSet<Developer> Developer { get; set; }
-        public virtual DbSet<Project> Project { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<Developer> Developers { get; set; }
+        public virtual DbSet<Project> Projects { get; set; }
         public virtual DbSet<ProjectData> ProjectData { get; set; }
         public virtual DbSet<ProjectDeveloper> ProjectDeveloper { get; set; }
-        public virtual DbSet<ProjectStage> ProjectStage { get; set; }
-        public virtual DbSet<ProjectTechnology> ProjectTechnology { get; set; }
-        public virtual DbSet<Stage> Stage { get; set; }
-        public virtual DbSet<StageTeam> StageTeam { get; set; }
-        public virtual DbSet<Technology> Technology { get; set; }
+        public virtual DbSet<ProjectStage> ProjectStages { get; set; }
+        public virtual DbSet<ProjectTechnology> ProjectTechnologies { get; set; }
+        public virtual DbSet<Stage> Stages { get; set; }
+        public virtual DbSet<StageTeam> StageTeams { get; set; }
+        public virtual DbSet<Technology> Technologies { get; set; }
         public virtual DbSet<TechnologyDeveloper> TechnologyDeveloper { get; set; }
     }
 }

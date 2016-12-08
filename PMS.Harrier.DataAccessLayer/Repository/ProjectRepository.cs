@@ -26,7 +26,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository
 
         public Project GetProjectByName(string name)
         {
-            var result = EfDbContext.Projects.FirstOrDefault(p => p.Name == name);
+            var result = EfDbContext.Projects.FirstOrDefault(p => p.ProjectName == name);
             return result;
         }
 
