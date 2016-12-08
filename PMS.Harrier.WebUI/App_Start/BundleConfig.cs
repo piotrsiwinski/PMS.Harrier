@@ -11,7 +11,8 @@ namespace PMS.Harrier.WebUI
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.validate.js",
-                        "~/Scripts/jquery.validate.unobtrusive.js"));
+                        "~/Scripts/jquery.validate.unobtrusive.js",
+                        "~/Scripts/jquery.js"));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
@@ -23,9 +24,9 @@ namespace PMS.Harrier.WebUI
                       "~/Scripts/respond.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
-                "~/Content/site.css",
-                "~/Content/bootstrap.css"
-                      ));
+                "~/Content/bootstrap.css",
+                "~/Content/simple-sidebar.css",
+                "~/Content/Site.css"));
         }
     }
 }
