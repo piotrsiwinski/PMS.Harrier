@@ -1,0 +1,1051 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="HarrierModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Login" Type="nvarchar" MaxLength="25" />
+          <Property Name="Password" Type="nvarchar" MaxLength="64" />
+          <Property Name="Role" Type="nvarchar" MaxLength="255" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Location" Type="nvarchar" MaxLength="255" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsActive" Type="smallint" />
+          <Property Name="IsEnabled" Type="smallint" />
+          <Property Name="Country" Type="nvarchar" MaxLength="45" />
+          <Property Name="RegisterDate" Type="varchar" MaxLength="8000" />
+          <Property Name="EmailHash" Type="nvarchar" MaxLength="100" />
+          <Property Name="AccountToken" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="AccountAdresses">
+          <Key>
+            <PropertyRef Name="AccountAdressesId" />
+          </Key>
+          <Property Name="AccountAdressesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="45" />
+          <Property Name="Street" Type="nvarchar" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" />
+          <Property Name="IsMainAdress" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ccontact">
+          <Key>
+            <PropertyRef Name="ConcactId" />
+          </Key>
+          <Property Name="ConcactId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" />
+          <Property Name="Topic" Type="nvarchar" MaxLength="255" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="45" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CoursesId" />
+          </Key>
+          <Property Name="CoursesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CourseMainName" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="DeveloperId" />
+          </Key>
+          <Property Name="DeveloperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="ExperienceFromDate" Type="varchar" MaxLength="8000" />
+          <Property Name="CostPerHour" Type="nvarchar" MaxLength="45" />
+          <Property Name="WeekAvailability" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AccountId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="date" />
+          <Property Name="DeathLine" Type="date" />
+          <Property Name="EndDate" Type="date" />
+          <Property Name="EstimatedHours" Type="int" />
+          <Property Name="LoggedHours" Type="int" />
+          <Property Name="StartedByAccount" Type="int" />
+          <Property Name="ProjectStatus" Type="int" Nullable="false" />
+          <Property Name="ProjectLeaderId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectData">
+          <Key>
+            <PropertyRef Name="ProjectDataId" />
+          </Key>
+          <Property Name="ProjectDataId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="ProjectDataDirectory" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="ProjectDeveloper">
+          <Key>
+            <PropertyRef Name="ProjectDeveloperId" />
+          </Key>
+          <Property Name="ProjectDeveloperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectStage">
+          <Key>
+            <PropertyRef Name="ProjectStageId" />
+          </Key>
+          <Property Name="ProjectStageId" Type="int" Nullable="false" />
+          <Property Name="StartDate" Type="nvarchar" MaxLength="45" />
+          <Property Name="EndDate" Type="nvarchar" MaxLength="45" />
+          <Property Name="DeathLine" Type="nvarchar" MaxLength="45" />
+          <Property Name="StageNumber" Type="nvarchar" MaxLength="45" />
+          <Property Name="Project_id" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProjectTechnologies">
+          <Key>
+            <PropertyRef Name="ProjectTechnologiesId" />
+            <PropertyRef Name="TechnologiesId" />
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectTechnologiesId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TechnologiesId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stages">
+          <Key>
+            <PropertyRef Name="StageId" />
+          </Key>
+          <Property Name="StageId" Type="int" Nullable="false" />
+          <Property Name="ProjectId" Type="int" Nullable="false" />
+          <Property Name="StageNumber" Type="int" />
+          <Property Name="StageStartDate" Type="date" />
+          <Property Name="StageEndDate" Type="date" />
+          <Property Name="StageAccepted" Type="smallint" />
+          <Property Name="StageLeaderDeveloperId" Type="int" />
+          <Property Name="StageDescription" Type="nvarchar" MaxLength="45" />
+          <Property Name="StageStatus" Type="int" />
+        </EntityType>
+        <EntityType Name="StageTeam">
+          <Key>
+            <PropertyRef Name="StageTeamId" />
+          </Key>
+          <Property Name="StageTeamId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="StagesID" Type="int" Nullable="false" />
+          <Property Name="IsStageLeader" Type="smallint" />
+          <Property Name="Developer_idDeveloper" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="principal_id" Type="int" Nullable="false" />
+          <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="version" Type="int" />
+          <Property Name="definition" Type="varbinary(max)" />
+        </EntityType>
+        <EntityType Name="Technologies">
+          <Key>
+            <PropertyRef Name="TechnologyId" />
+          </Key>
+          <Property Name="TechnologyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TechnologyName" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsActive" Type="smallint" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TechnologiesDeveloper">
+          <Key>
+            <PropertyRef Name="TechnologiesDeveloperId" />
+          </Key>
+          <Property Name="TechnologiesDeveloperId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TechnologiesId" Type="int" Nullable="false" />
+          <Property Name="DeveloperId" Type="int" Nullable="false" />
+          <Property Name="experience_from" Type="date" />
+          <Property Name="skill_level" Type="int" />
+          <Property Name="is_tech_promotor" Type="smallint" />
+          <Property Name="technology_promotor_approved" Type="smallint" />
+        </EntityType>
+        <Association Name="accountadresses$fk_accountAdresses__account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountAdresses" Type="Self.AccountAdresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AccountAdresses">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="developer$fk_Developer_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Developer" Type="Self.Developer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Developer">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="project$fk_Project_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projectdata$fk_projectdata_project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectData" Type="Self.ProjectData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectData">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projectdeveloper$fk_ProjectDeveloper_Developer1">
+          <End Role="Developer" Type="Self.Developer" Multiplicity="1" />
+          <End Role="ProjectDeveloper" Type="Self.ProjectDeveloper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="DeveloperId" />
+            </Principal>
+            <Dependent Role="ProjectDeveloper">
+              <PropertyRef Name="DeveloperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projectdeveloper$fk_ProjectDeveloper_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectDeveloper" Type="Self.ProjectDeveloper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectDeveloper">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projectstage$fk_ProjectStage_Project1">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectStage" Type="Self.ProjectStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectStage">
+              <PropertyRef Name="Project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projecttechnologies$fk_project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectTechnologies" Type="Self.ProjectTechnologies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectTechnologies">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projecttechnologies$fk_technologies">
+          <End Role="Technologies" Type="Self.Technologies" Multiplicity="1" />
+          <End Role="ProjectTechnologies" Type="Self.ProjectTechnologies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technologies">
+              <PropertyRef Name="TechnologyId" />
+            </Principal>
+            <Dependent Role="ProjectTechnologies">
+              <PropertyRef Name="TechnologiesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stages$fk_Stages_Project1">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="Stages" Type="Self.Stages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Stages">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stageteam$fk_StagesTeams_Stages">
+          <End Role="Stages" Type="Self.Stages" Multiplicity="1" />
+          <End Role="StageTeam" Type="Self.StageTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stages">
+              <PropertyRef Name="StageId" />
+            </Principal>
+            <Dependent Role="StageTeam">
+              <PropertyRef Name="StagesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stageteam$fk_stageteam_developer">
+          <End Role="Developer" Type="Self.Developer" Multiplicity="1" />
+          <End Role="StageTeam" Type="Self.StageTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="DeveloperId" />
+            </Principal>
+            <Dependent Role="StageTeam">
+              <PropertyRef Name="Developer_idDeveloper" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="technologiesdeveloper$fk_TechnologiesDeveloper_Developer1">
+          <End Role="Developer" Type="Self.Developer" Multiplicity="1" />
+          <End Role="TechnologiesDeveloper" Type="Self.TechnologiesDeveloper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="DeveloperId" />
+            </Principal>
+            <Dependent Role="TechnologiesDeveloper">
+              <PropertyRef Name="DeveloperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="technologiesdeveloper$fk_TechnologiesDeveloper_Technologies1">
+          <End Role="Technologies" Type="Self.Technologies" Multiplicity="1" />
+          <End Role="TechnologiesDeveloper" Type="Self.TechnologiesDeveloper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technologies">
+              <PropertyRef Name="TechnologyId" />
+            </Principal>
+            <Dependent Role="TechnologiesDeveloper">
+              <PropertyRef Name="TechnologiesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HarrierModelStoreContainer">
+          <EntitySet Name="Account" EntityType="Self.Account" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AccountAdresses" EntityType="Self.AccountAdresses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ccontact" EntityType="Self.Ccontact" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Developer" EntityType="Self.Developer" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Project" EntityType="Self.Project" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectData" EntityType="Self.ProjectData" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectDeveloper" EntityType="Self.ProjectDeveloper" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectStage" EntityType="Self.ProjectStage" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProjectTechnologies" EntityType="Self.ProjectTechnologies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stages" EntityType="Self.Stages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StageTeam" EntityType="Self.StageTeam" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Technologies" EntityType="Self.Technologies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TechnologiesDeveloper" EntityType="Self.TechnologiesDeveloper" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="accountadresses$fk_accountAdresses__account" Association="Self.accountadresses$fk_accountAdresses__account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountAdresses" EntitySet="AccountAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="developer$fk_Developer_Account" Association="Self.developer$fk_Developer_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Developer" EntitySet="Developer" />
+          </AssociationSet>
+          <AssociationSet Name="project$fk_Project_Account1" Association="Self.project$fk_Project_Account1">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="projectdata$fk_projectdata_project" Association="Self.projectdata$fk_projectdata_project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectData" EntitySet="ProjectData" />
+          </AssociationSet>
+          <AssociationSet Name="projectdeveloper$fk_ProjectDeveloper_Developer1" Association="Self.projectdeveloper$fk_ProjectDeveloper_Developer1">
+            <End Role="Developer" EntitySet="Developer" />
+            <End Role="ProjectDeveloper" EntitySet="ProjectDeveloper" />
+          </AssociationSet>
+          <AssociationSet Name="projectdeveloper$fk_ProjectDeveloper_Project" Association="Self.projectdeveloper$fk_ProjectDeveloper_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectDeveloper" EntitySet="ProjectDeveloper" />
+          </AssociationSet>
+          <AssociationSet Name="projectstage$fk_ProjectStage_Project1" Association="Self.projectstage$fk_ProjectStage_Project1">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectStage" EntitySet="ProjectStage" />
+          </AssociationSet>
+          <AssociationSet Name="projecttechnologies$fk_project" Association="Self.projecttechnologies$fk_project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectTechnologies" EntitySet="ProjectTechnologies" />
+          </AssociationSet>
+          <AssociationSet Name="projecttechnologies$fk_technologies" Association="Self.projecttechnologies$fk_technologies">
+            <End Role="Technologies" EntitySet="Technologies" />
+            <End Role="ProjectTechnologies" EntitySet="ProjectTechnologies" />
+          </AssociationSet>
+          <AssociationSet Name="stages$fk_Stages_Project1" Association="Self.stages$fk_Stages_Project1">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Stages" EntitySet="Stages" />
+          </AssociationSet>
+          <AssociationSet Name="stageteam$fk_StagesTeams_Stages" Association="Self.stageteam$fk_StagesTeams_Stages">
+            <End Role="Stages" EntitySet="Stages" />
+            <End Role="StageTeam" EntitySet="StageTeam" />
+          </AssociationSet>
+          <AssociationSet Name="stageteam$fk_stageteam_developer" Association="Self.stageteam$fk_stageteam_developer">
+            <End Role="Developer" EntitySet="Developer" />
+            <End Role="StageTeam" EntitySet="StageTeam" />
+          </AssociationSet>
+          <AssociationSet Name="technologiesdeveloper$fk_TechnologiesDeveloper_Developer1" Association="Self.technologiesdeveloper$fk_TechnologiesDeveloper_Developer1">
+            <End Role="Developer" EntitySet="Developer" />
+            <End Role="TechnologiesDeveloper" EntitySet="TechnologiesDeveloper" />
+          </AssociationSet>
+          <AssociationSet Name="technologiesdeveloper$fk_TechnologiesDeveloper_Technologies1" Association="Self.technologiesdeveloper$fk_TechnologiesDeveloper_Technologies1">
+            <End Role="Technologies" EntitySet="Technologies" />
+            <End Role="TechnologiesDeveloper" EntitySet="TechnologiesDeveloper" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="HarrierModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Account">
+          <Key>
+            <PropertyRef Name="AccountId" />
+          </Key>
+          <Property Name="AccountId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Login" Type="String" MaxLength="25" FixedLength="false" Unicode="true" />
+          <Property Name="Password" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Role" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Location" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int16" />
+          <Property Name="IsEnabled" Type="Int16" />
+          <Property Name="Country" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="RegisterDate" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="EmailHash" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="AccountToken" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AccountAdresses" Relationship="Self.accountadresses_fk_accountAdresses__account" FromRole="Account" ToRole="AccountAdresses" />
+          <NavigationProperty Name="Developer" Relationship="Self.developer_fk_Developer_Account" FromRole="Account" ToRole="Developer" />
+          <NavigationProperty Name="Project" Relationship="Self.project_fk_Project_Account1" FromRole="Account" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="AccountAdresses">
+          <Key>
+            <PropertyRef Name="AccountAdressesId" />
+          </Key>
+          <Property Name="AccountAdressesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="Street" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="IsMainAdress" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.accountadresses_fk_accountAdresses__account" FromRole="AccountAdresses" ToRole="Account" />
+        </EntityType>
+        <EntityType Name="Ccontact">
+          <Key>
+            <PropertyRef Name="ConcactId" />
+          </Key>
+          <Property Name="ConcactId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Topic" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Courses">
+          <Key>
+            <PropertyRef Name="CoursesId" />
+          </Key>
+          <Property Name="CoursesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CourseMainName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Developer">
+          <Key>
+            <PropertyRef Name="DeveloperId" />
+          </Key>
+          <Property Name="DeveloperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="ExperienceFromDate" Type="String" MaxLength="8000" FixedLength="false" Unicode="false" />
+          <Property Name="CostPerHour" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="WeekAvailability" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Account" Relationship="Self.developer_fk_Developer_Account" FromRole="Developer" ToRole="Account" />
+          <NavigationProperty Name="ProjectDeveloper" Relationship="Self.projectdeveloper_fk_ProjectDeveloper_Developer1" FromRole="Developer" ToRole="ProjectDeveloper" />
+          <NavigationProperty Name="StageTeam" Relationship="Self.stageteam_fk_stageteam_developer" FromRole="Developer" ToRole="StageTeam" />
+          <NavigationProperty Name="TechnologiesDeveloper" Relationship="Self.technologiesdeveloper_fk_TechnologiesDeveloper_Developer1" FromRole="Developer" ToRole="TechnologiesDeveloper" />
+        </EntityType>
+        <EntityType Name="Project">
+          <Key>
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AccountId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="0" />
+          <Property Name="DeathLine" Type="DateTime" Precision="0" />
+          <Property Name="EndDate" Type="DateTime" Precision="0" />
+          <Property Name="EstimatedHours" Type="Int32" />
+          <Property Name="LoggedHours" Type="Int32" />
+          <Property Name="StartedByAccount" Type="Int32" />
+          <Property Name="ProjectStatus" Type="Int32" Nullable="false" />
+          <Property Name="ProjectLeaderId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Account" Relationship="Self.project_fk_Project_Account1" FromRole="Project" ToRole="Account" />
+          <NavigationProperty Name="ProjectData" Relationship="Self.projectdata_fk_projectdata_project" FromRole="Project" ToRole="ProjectData" />
+          <NavigationProperty Name="ProjectDeveloper" Relationship="Self.projectdeveloper_fk_ProjectDeveloper_Project" FromRole="Project" ToRole="ProjectDeveloper" />
+          <NavigationProperty Name="ProjectStage" Relationship="Self.projectstage_fk_ProjectStage_Project1" FromRole="Project" ToRole="ProjectStage" />
+          <NavigationProperty Name="ProjectTechnologies" Relationship="Self.projecttechnologies_fk_project" FromRole="Project" ToRole="ProjectTechnologies" />
+          <NavigationProperty Name="Stages" Relationship="Self.stages_fk_Stages_Project1" FromRole="Project" ToRole="Stages" />
+        </EntityType>
+        <EntityType Name="ProjectData">
+          <Key>
+            <PropertyRef Name="ProjectDataId" />
+          </Key>
+          <Property Name="ProjectDataId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectDataDirectory" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Project" Relationship="Self.projectdata_fk_projectdata_project" FromRole="ProjectData" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="ProjectDeveloper">
+          <Key>
+            <PropertyRef Name="ProjectDeveloperId" />
+          </Key>
+          <Property Name="ProjectDeveloperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DeveloperId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Developer" Relationship="Self.projectdeveloper_fk_ProjectDeveloper_Developer1" FromRole="ProjectDeveloper" ToRole="Developer" />
+          <NavigationProperty Name="Project" Relationship="Self.projectdeveloper_fk_ProjectDeveloper_Project" FromRole="ProjectDeveloper" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="ProjectStage">
+          <Key>
+            <PropertyRef Name="ProjectStageId" />
+          </Key>
+          <Property Name="ProjectStageId" Type="Int32" Nullable="false" />
+          <Property Name="StartDate" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="EndDate" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="DeathLine" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="StageNumber" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="Project_id" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.projectstage_fk_ProjectStage_Project1" FromRole="ProjectStage" ToRole="Project" />
+        </EntityType>
+        <EntityType Name="ProjectTechnologies">
+          <Key>
+            <PropertyRef Name="ProjectTechnologiesId" />
+            <PropertyRef Name="TechnologiesId" />
+            <PropertyRef Name="ProjectId" />
+          </Key>
+          <Property Name="ProjectTechnologiesId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TechnologiesId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Project" Relationship="Self.projecttechnologies_fk_project" FromRole="ProjectTechnologies" ToRole="Project" />
+          <NavigationProperty Name="Technologies" Relationship="Self.projecttechnologies_fk_technologies" FromRole="ProjectTechnologies" ToRole="Technologies" />
+        </EntityType>
+        <EntityType Name="Stages">
+          <Key>
+            <PropertyRef Name="StageId" />
+          </Key>
+          <Property Name="StageId" Type="Int32" Nullable="false" />
+          <Property Name="ProjectId" Type="Int32" Nullable="false" />
+          <Property Name="StageNumber" Type="Int32" />
+          <Property Name="StageStartDate" Type="DateTime" Precision="0" />
+          <Property Name="StageEndDate" Type="DateTime" Precision="0" />
+          <Property Name="StageAccepted" Type="Int16" />
+          <Property Name="StageLeaderDeveloperId" Type="Int32" />
+          <Property Name="StageDescription" Type="String" MaxLength="45" FixedLength="false" Unicode="true" />
+          <Property Name="StageStatus" Type="Int32" />
+          <NavigationProperty Name="Project" Relationship="Self.stages_fk_Stages_Project1" FromRole="Stages" ToRole="Project" />
+          <NavigationProperty Name="StageTeam" Relationship="Self.stageteam_fk_StagesTeams_Stages" FromRole="Stages" ToRole="StageTeam" />
+        </EntityType>
+        <EntityType Name="StageTeam">
+          <Key>
+            <PropertyRef Name="StageTeamId" />
+          </Key>
+          <Property Name="StageTeamId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="StagesID" Type="Int32" Nullable="false" />
+          <Property Name="IsStageLeader" Type="Int16" />
+          <Property Name="Developer_idDeveloper" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Developer" Relationship="Self.stageteam_fk_stageteam_developer" FromRole="StageTeam" ToRole="Developer" />
+          <NavigationProperty Name="Stages" Relationship="Self.stageteam_fk_StagesTeams_Stages" FromRole="StageTeam" ToRole="Stages" />
+        </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Technologies">
+          <Key>
+            <PropertyRef Name="TechnologyId" />
+          </Key>
+          <Property Name="TechnologyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TechnologyName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="IsActive" Type="Int16" Nullable="false" />
+          <NavigationProperty Name="ProjectTechnologies" Relationship="Self.projecttechnologies_fk_technologies" FromRole="Technologies" ToRole="ProjectTechnologies" />
+          <NavigationProperty Name="TechnologiesDeveloper" Relationship="Self.technologiesdeveloper_fk_TechnologiesDeveloper_Technologies1" FromRole="Technologies" ToRole="TechnologiesDeveloper" />
+        </EntityType>
+        <EntityType Name="TechnologiesDeveloper">
+          <Key>
+            <PropertyRef Name="TechnologiesDeveloperId" />
+          </Key>
+          <Property Name="TechnologiesDeveloperId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TechnologiesId" Type="Int32" Nullable="false" />
+          <Property Name="DeveloperId" Type="Int32" Nullable="false" />
+          <Property Name="experience_from" Type="DateTime" Precision="0" />
+          <Property Name="skill_level" Type="Int32" />
+          <Property Name="is_tech_promotor" Type="Int16" />
+          <Property Name="technology_promotor_approved" Type="Int16" />
+          <NavigationProperty Name="Developer" Relationship="Self.technologiesdeveloper_fk_TechnologiesDeveloper_Developer1" FromRole="TechnologiesDeveloper" ToRole="Developer" />
+          <NavigationProperty Name="Technologies" Relationship="Self.technologiesdeveloper_fk_TechnologiesDeveloper_Technologies1" FromRole="TechnologiesDeveloper" ToRole="Technologies" />
+        </EntityType>
+        <Association Name="accountadresses_fk_accountAdresses__account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="AccountAdresses" Type="Self.AccountAdresses" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="AccountAdresses">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="developer_fk_Developer_Account">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Developer" Type="Self.Developer" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Developer">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="project_fk_Project_Account1">
+          <End Role="Account" Type="Self.Account" Multiplicity="1" />
+          <End Role="Project" Type="Self.Project" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Account">
+              <PropertyRef Name="AccountId" />
+            </Principal>
+            <Dependent Role="Project">
+              <PropertyRef Name="AccountId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projectdeveloper_fk_ProjectDeveloper_Developer1">
+          <End Role="Developer" Type="Self.Developer" Multiplicity="1" />
+          <End Role="ProjectDeveloper" Type="Self.ProjectDeveloper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="DeveloperId" />
+            </Principal>
+            <Dependent Role="ProjectDeveloper">
+              <PropertyRef Name="DeveloperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stageteam_fk_stageteam_developer">
+          <End Role="Developer" Type="Self.Developer" Multiplicity="1" />
+          <End Role="StageTeam" Type="Self.StageTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="DeveloperId" />
+            </Principal>
+            <Dependent Role="StageTeam">
+              <PropertyRef Name="Developer_idDeveloper" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="technologiesdeveloper_fk_TechnologiesDeveloper_Developer1">
+          <End Role="Developer" Type="Self.Developer" Multiplicity="1" />
+          <End Role="TechnologiesDeveloper" Type="Self.TechnologiesDeveloper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Developer">
+              <PropertyRef Name="DeveloperId" />
+            </Principal>
+            <Dependent Role="TechnologiesDeveloper">
+              <PropertyRef Name="DeveloperId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projectdata_fk_projectdata_project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectData" Type="Self.ProjectData" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectData">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projectdeveloper_fk_ProjectDeveloper_Project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectDeveloper" Type="Self.ProjectDeveloper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectDeveloper">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projectstage_fk_ProjectStage_Project1">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectStage" Type="Self.ProjectStage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectStage">
+              <PropertyRef Name="Project_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projecttechnologies_fk_project">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="ProjectTechnologies" Type="Self.ProjectTechnologies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="ProjectTechnologies">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stages_fk_Stages_Project1">
+          <End Role="Project" Type="Self.Project" Multiplicity="1" />
+          <End Role="Stages" Type="Self.Stages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Project">
+              <PropertyRef Name="ProjectId" />
+            </Principal>
+            <Dependent Role="Stages">
+              <PropertyRef Name="ProjectId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="projecttechnologies_fk_technologies">
+          <End Role="Technologies" Type="Self.Technologies" Multiplicity="1" />
+          <End Role="ProjectTechnologies" Type="Self.ProjectTechnologies" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technologies">
+              <PropertyRef Name="TechnologyId" />
+            </Principal>
+            <Dependent Role="ProjectTechnologies">
+              <PropertyRef Name="TechnologiesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="stageteam_fk_StagesTeams_Stages">
+          <End Role="Stages" Type="Self.Stages" Multiplicity="1" />
+          <End Role="StageTeam" Type="Self.StageTeam" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Stages">
+              <PropertyRef Name="StageId" />
+            </Principal>
+            <Dependent Role="StageTeam">
+              <PropertyRef Name="StagesID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="technologiesdeveloper_fk_TechnologiesDeveloper_Technologies1">
+          <End Role="Technologies" Type="Self.Technologies" Multiplicity="1" />
+          <End Role="TechnologiesDeveloper" Type="Self.TechnologiesDeveloper" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Technologies">
+              <PropertyRef Name="TechnologyId" />
+            </Principal>
+            <Dependent Role="TechnologiesDeveloper">
+              <PropertyRef Name="TechnologiesId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="HarrierEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Account" EntityType="Self.Account" />
+          <EntitySet Name="AccountAdresses" EntityType="Self.AccountAdresses" />
+          <EntitySet Name="Ccontact" EntityType="Self.Ccontact" />
+          <EntitySet Name="Courses" EntityType="Self.Courses" />
+          <EntitySet Name="Developer" EntityType="Self.Developer" />
+          <EntitySet Name="Project" EntityType="Self.Project" />
+          <EntitySet Name="ProjectData" EntityType="Self.ProjectData" />
+          <EntitySet Name="ProjectDeveloper" EntityType="Self.ProjectDeveloper" />
+          <EntitySet Name="ProjectStage" EntityType="Self.ProjectStage" />
+          <EntitySet Name="ProjectTechnologies" EntityType="Self.ProjectTechnologies" />
+          <EntitySet Name="Stages" EntityType="Self.Stages" />
+          <EntitySet Name="StageTeam" EntityType="Self.StageTeam" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
+          <EntitySet Name="Technologies" EntityType="Self.Technologies" />
+          <EntitySet Name="TechnologiesDeveloper" EntityType="Self.TechnologiesDeveloper" />
+          <AssociationSet Name="accountadresses_fk_accountAdresses__account" Association="Self.accountadresses_fk_accountAdresses__account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="AccountAdresses" EntitySet="AccountAdresses" />
+          </AssociationSet>
+          <AssociationSet Name="developer_fk_Developer_Account" Association="Self.developer_fk_Developer_Account">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Developer" EntitySet="Developer" />
+          </AssociationSet>
+          <AssociationSet Name="project_fk_Project_Account1" Association="Self.project_fk_Project_Account1">
+            <End Role="Account" EntitySet="Account" />
+            <End Role="Project" EntitySet="Project" />
+          </AssociationSet>
+          <AssociationSet Name="projectdeveloper_fk_ProjectDeveloper_Developer1" Association="Self.projectdeveloper_fk_ProjectDeveloper_Developer1">
+            <End Role="Developer" EntitySet="Developer" />
+            <End Role="ProjectDeveloper" EntitySet="ProjectDeveloper" />
+          </AssociationSet>
+          <AssociationSet Name="stageteam_fk_stageteam_developer" Association="Self.stageteam_fk_stageteam_developer">
+            <End Role="Developer" EntitySet="Developer" />
+            <End Role="StageTeam" EntitySet="StageTeam" />
+          </AssociationSet>
+          <AssociationSet Name="technologiesdeveloper_fk_TechnologiesDeveloper_Developer1" Association="Self.technologiesdeveloper_fk_TechnologiesDeveloper_Developer1">
+            <End Role="Developer" EntitySet="Developer" />
+            <End Role="TechnologiesDeveloper" EntitySet="TechnologiesDeveloper" />
+          </AssociationSet>
+          <AssociationSet Name="projectdata_fk_projectdata_project" Association="Self.projectdata_fk_projectdata_project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectData" EntitySet="ProjectData" />
+          </AssociationSet>
+          <AssociationSet Name="projectdeveloper_fk_ProjectDeveloper_Project" Association="Self.projectdeveloper_fk_ProjectDeveloper_Project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectDeveloper" EntitySet="ProjectDeveloper" />
+          </AssociationSet>
+          <AssociationSet Name="projectstage_fk_ProjectStage_Project1" Association="Self.projectstage_fk_ProjectStage_Project1">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectStage" EntitySet="ProjectStage" />
+          </AssociationSet>
+          <AssociationSet Name="projecttechnologies_fk_project" Association="Self.projecttechnologies_fk_project">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="ProjectTechnologies" EntitySet="ProjectTechnologies" />
+          </AssociationSet>
+          <AssociationSet Name="stages_fk_Stages_Project1" Association="Self.stages_fk_Stages_Project1">
+            <End Role="Project" EntitySet="Project" />
+            <End Role="Stages" EntitySet="Stages" />
+          </AssociationSet>
+          <AssociationSet Name="projecttechnologies_fk_technologies" Association="Self.projecttechnologies_fk_technologies">
+            <End Role="Technologies" EntitySet="Technologies" />
+            <End Role="ProjectTechnologies" EntitySet="ProjectTechnologies" />
+          </AssociationSet>
+          <AssociationSet Name="stageteam_fk_StagesTeams_Stages" Association="Self.stageteam_fk_StagesTeams_Stages">
+            <End Role="Stages" EntitySet="Stages" />
+            <End Role="StageTeam" EntitySet="StageTeam" />
+          </AssociationSet>
+          <AssociationSet Name="technologiesdeveloper_fk_TechnologiesDeveloper_Technologies1" Association="Self.technologiesdeveloper_fk_TechnologiesDeveloper_Technologies1">
+            <End Role="Technologies" EntitySet="Technologies" />
+            <End Role="TechnologiesDeveloper" EntitySet="TechnologiesDeveloper" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="HarrierModelStoreContainer" CdmEntityContainer="HarrierEntities">
+          <EntitySetMapping Name="Account">
+            <EntityTypeMapping TypeName="HarrierModel.Account">
+              <MappingFragment StoreEntitySet="Account">
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="Login" ColumnName="Login" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Role" ColumnName="Role" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="RegisterDate" ColumnName="RegisterDate" />
+                <ScalarProperty Name="EmailHash" ColumnName="EmailHash" />
+                <ScalarProperty Name="AccountToken" ColumnName="AccountToken" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AccountAdresses">
+            <EntityTypeMapping TypeName="HarrierModel.AccountAdresses">
+              <MappingFragment StoreEntitySet="AccountAdresses">
+                <ScalarProperty Name="AccountAdressesId" ColumnName="AccountAdressesId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="IsMainAdress" ColumnName="IsMainAdress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ccontact">
+            <EntityTypeMapping TypeName="HarrierModel.Ccontact">
+              <MappingFragment StoreEntitySet="Ccontact">
+                <ScalarProperty Name="ConcactId" ColumnName="ConcactId" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="Topic" ColumnName="Topic" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Courses">
+            <EntityTypeMapping TypeName="HarrierModel.Courses">
+              <MappingFragment StoreEntitySet="Courses">
+                <ScalarProperty Name="CoursesId" ColumnName="CoursesId" />
+                <ScalarProperty Name="CourseMainName" ColumnName="CourseMainName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Developer">
+            <EntityTypeMapping TypeName="HarrierModel.Developer">
+              <MappingFragment StoreEntitySet="Developer">
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="ExperienceFromDate" ColumnName="ExperienceFromDate" />
+                <ScalarProperty Name="CostPerHour" ColumnName="CostPerHour" />
+                <ScalarProperty Name="WeekAvailability" ColumnName="WeekAvailability" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Project">
+            <EntityTypeMapping TypeName="HarrierModel.Project">
+              <MappingFragment StoreEntitySet="Project">
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="DeathLine" ColumnName="DeathLine" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="EstimatedHours" ColumnName="EstimatedHours" />
+                <ScalarProperty Name="LoggedHours" ColumnName="LoggedHours" />
+                <ScalarProperty Name="StartedByAccount" ColumnName="StartedByAccount" />
+                <ScalarProperty Name="ProjectStatus" ColumnName="ProjectStatus" />
+                <ScalarProperty Name="ProjectLeaderId" ColumnName="ProjectLeaderId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectData">
+            <EntityTypeMapping TypeName="HarrierModel.ProjectData">
+              <MappingFragment StoreEntitySet="ProjectData">
+                <ScalarProperty Name="ProjectDataId" ColumnName="ProjectDataId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="ProjectDataDirectory" ColumnName="ProjectDataDirectory" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectDeveloper">
+            <EntityTypeMapping TypeName="HarrierModel.ProjectDeveloper">
+              <MappingFragment StoreEntitySet="ProjectDeveloper">
+                <ScalarProperty Name="ProjectDeveloperId" ColumnName="ProjectDeveloperId" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectStage">
+            <EntityTypeMapping TypeName="HarrierModel.ProjectStage">
+              <MappingFragment StoreEntitySet="ProjectStage">
+                <ScalarProperty Name="ProjectStageId" ColumnName="ProjectStageId" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="DeathLine" ColumnName="DeathLine" />
+                <ScalarProperty Name="StageNumber" ColumnName="StageNumber" />
+                <ScalarProperty Name="Project_id" ColumnName="Project_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProjectTechnologies">
+            <EntityTypeMapping TypeName="HarrierModel.ProjectTechnologies">
+              <MappingFragment StoreEntitySet="ProjectTechnologies">
+                <ScalarProperty Name="ProjectTechnologiesId" ColumnName="ProjectTechnologiesId" />
+                <ScalarProperty Name="TechnologiesId" ColumnName="TechnologiesId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stages">
+            <EntityTypeMapping TypeName="HarrierModel.Stages">
+              <MappingFragment StoreEntitySet="Stages">
+                <ScalarProperty Name="StageId" ColumnName="StageId" />
+                <ScalarProperty Name="ProjectId" ColumnName="ProjectId" />
+                <ScalarProperty Name="StageNumber" ColumnName="StageNumber" />
+                <ScalarProperty Name="StageStartDate" ColumnName="StageStartDate" />
+                <ScalarProperty Name="StageEndDate" ColumnName="StageEndDate" />
+                <ScalarProperty Name="StageAccepted" ColumnName="StageAccepted" />
+                <ScalarProperty Name="StageLeaderDeveloperId" ColumnName="StageLeaderDeveloperId" />
+                <ScalarProperty Name="StageDescription" ColumnName="StageDescription" />
+                <ScalarProperty Name="StageStatus" ColumnName="StageStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StageTeam">
+            <EntityTypeMapping TypeName="HarrierModel.StageTeam">
+              <MappingFragment StoreEntitySet="StageTeam">
+                <ScalarProperty Name="StageTeamId" ColumnName="StageTeamId" />
+                <ScalarProperty Name="StagesID" ColumnName="StagesID" />
+                <ScalarProperty Name="IsStageLeader" ColumnName="IsStageLeader" />
+                <ScalarProperty Name="Developer_idDeveloper" ColumnName="Developer_idDeveloper" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="sysdiagrams">
+            <EntityTypeMapping TypeName="HarrierModel.sysdiagrams">
+              <MappingFragment StoreEntitySet="sysdiagrams">
+                <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Technologies">
+            <EntityTypeMapping TypeName="HarrierModel.Technologies">
+              <MappingFragment StoreEntitySet="Technologies">
+                <ScalarProperty Name="TechnologyId" ColumnName="TechnologyId" />
+                <ScalarProperty Name="TechnologyName" ColumnName="TechnologyName" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TechnologiesDeveloper">
+            <EntityTypeMapping TypeName="HarrierModel.TechnologiesDeveloper">
+              <MappingFragment StoreEntitySet="TechnologiesDeveloper">
+                <ScalarProperty Name="TechnologiesDeveloperId" ColumnName="TechnologiesDeveloperId" />
+                <ScalarProperty Name="TechnologiesId" ColumnName="TechnologiesId" />
+                <ScalarProperty Name="DeveloperId" ColumnName="DeveloperId" />
+                <ScalarProperty Name="experience_from" ColumnName="experience_from" />
+                <ScalarProperty Name="skill_level" ColumnName="skill_level" />
+                <ScalarProperty Name="is_tech_promotor" ColumnName="is_tech_promotor" />
+                <ScalarProperty Name="technology_promotor_approved" ColumnName="technology_promotor_approved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

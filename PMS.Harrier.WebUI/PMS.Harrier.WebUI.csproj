@@ -61,6 +61,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -177,6 +179,66 @@
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProjectController.cs" />
     <Compile Include="DependencyInjection\AutofacResolver.cs" />
+    <Compile Include="EDM\Account.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\AccountAdresses.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Ccontact.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Courses.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Developer.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Harrier_test_db.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Harrier_test_db.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Harrier_test_db.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Harrier_test_db.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Harrier_test_db.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Project.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ProjectData.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ProjectDeveloper.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ProjectStage.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\ProjectTechnologies.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Stages.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\StageTeam.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\sysdiagrams.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\Technologies.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EDM\TechnologiesDeveloper.cs">
+      <DependentUpon>Harrier_test_db.tt</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -189,12 +251,29 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="EDM\Harrier_test_db.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Harrier_test_db.edmx</DependentUpon>
+      <LastGenOutput>Harrier_test_db.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="EDM\Harrier_test_db.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Harrier_test_db.edmx</DependentUpon>
+      <LastGenOutput>Harrier_test_db.cs</LastGenOutput>
+    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="EDM\Harrier_test_db.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Harrier_test_db.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="EDM\Harrier_test_db.edmx.diagram">
+      <DependentUpon>Harrier_test_db.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -265,6 +344,9 @@
       <Project>{E3B2504B-1ED3-4DEF-BE60-2AACD824C2E5}</Project>
       <Name>PMS.Harrier.DataAccessLayer</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

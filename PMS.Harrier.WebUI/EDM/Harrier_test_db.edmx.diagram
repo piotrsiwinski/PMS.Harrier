@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c5b4f44dab8f452c8b33eeb1c8b6b36c" Name="Diagram1">
+        <EntityTypeShape EntityType="HarrierModel.Account" Width="1.5" PointX="0.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.AccountAdresses" Width="1.5" PointX="3" PointY="6.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.Ccontact" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.Courses" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.Developer" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.Project" Width="1.5" PointX="3" PointY="15.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.ProjectData" Width="1.5" PointX="5.25" PointY="12.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.ProjectDeveloper" Width="1.5" PointX="8.25" PointY="13.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.ProjectStage" Width="1.5" PointX="5.25" PointY="15.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.ProjectTechnologies" Width="1.5" PointX="8.25" PointY="20.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.Stages" Width="1.5" PointX="5.25" PointY="21.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.StageTeam" Width="1.5" PointX="7.5" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.sysdiagrams" Width="1.5" PointX="7.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.Technologies" Width="1.5" PointX="3" PointY="2.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="HarrierModel.TechnologiesDeveloper" Width="1.5" PointX="5.25" PointY="9.375" IsExpanded="true" />
+        <AssociationConnector Association="HarrierModel.accountadresses_fk_accountAdresses__account" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.developer_fk_Developer_Account" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.project_fk_Project_Account1" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.projectdeveloper_fk_ProjectDeveloper_Developer1" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.stageteam_fk_stageteam_developer" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.technologiesdeveloper_fk_TechnologiesDeveloper_Developer1" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.projectdata_fk_projectdata_project" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.projectdeveloper_fk_ProjectDeveloper_Project" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.projectstage_fk_ProjectStage_Project1" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.projecttechnologies_fk_project" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.stages_fk_Stages_Project1" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.projecttechnologies_fk_technologies" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.stageteam_fk_StagesTeams_Stages" ManuallyRouted="false" />
+        <AssociationConnector Association="HarrierModel.technologiesdeveloper_fk_TechnologiesDeveloper_Technologies1" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
