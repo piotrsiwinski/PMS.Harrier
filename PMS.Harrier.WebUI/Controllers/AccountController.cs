@@ -8,6 +8,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.WebUI.Models;
 
 namespace PMS.Harrier.WebUI.Controllers

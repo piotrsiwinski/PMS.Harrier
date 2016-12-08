@@ -1,0 +1,52 @@
+﻿@model IEnumerable<PMS.Harrier.DataAccessLayer.Models.Developer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Account.Login)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ExperienceFromDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CostPerHour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.WeekAvailability)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Account.Login)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ExperienceFromDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CostPerHour)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.WeekAvailability)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.DeveloperId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.DeveloperId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.DeveloperId })
+        </td>
+    </tr>
+}
+
+</table>

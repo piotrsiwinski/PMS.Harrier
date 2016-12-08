@@ -1,11 +1,12 @@
 ﻿using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
+using Microsoft.AspNet.Identity.EntityFramework;
 using PMS.Harrier.DataAccessLayer.Initializers;
 using PMS.Harrier.DataAccessLayer.Models;
 
 namespace PMS.Harrier.DataAccessLayer.Concrete
 {
-    public class EfDbContext : DbContext
+    public class EfDbContext : IdentityDbContext<ApplicationUser>
     {
         public EfDbContext() : base("name=DefaultConnection")
         {
@@ -16,6 +17,10 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
         {
             //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
             base.OnModelCreating(modelBuilder);
+        }
+        public static EfDbContext Create()
+        {
+            return new EfDbContext();
         }
 
         //public DbSet<Project> ProjectsOld { get; set; }
