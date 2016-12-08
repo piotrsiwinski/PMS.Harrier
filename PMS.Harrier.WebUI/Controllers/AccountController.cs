@@ -152,7 +152,7 @@ namespace PMS.Harrier.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new Account { UserName = model.Email, Email = model.Email };
+                var user = new Account {FirstName = model.FirstName, LastName = model.LastName, Country = model.Country, UserName = model.Email, Email = model.Email, IsActive = true, IsEnabled = true, RegisterDate = DateTime.Now,};
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {

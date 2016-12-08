@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -30,10 +31,10 @@ namespace PMS.Harrier.DataAccessLayer.Models
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Location { get; set; }
-        public short? IsActive { get; set; }
-        public short? IsEnabled { get; set; }
+        public bool? IsActive { get; set; }
+        public bool? IsEnabled { get; set; }
         public string Country { get; set; }
-        public string RegisterDate { get; set; }
+        public DateTime? RegisterDate { get; set; }
         public string EmailHash { get; set; }
         public string AccountToken { get; set; }
 
