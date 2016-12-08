@@ -8,7 +8,7 @@ namespace PMS.Harrier.DataAccessLayer.Models
         {
             this.ProjectDeveloper = new HashSet<ProjectDeveloper>();
             this.StageTeam = new HashSet<StageTeam>();
-            this.TechnologiesDeveloper = new HashSet<TechnologyDeveloper.TechnologiesDeveloper>();
+            this.TechnologiesDeveloper = new HashSet<TechnologyDeveloper>();
         }
 
         public int DeveloperId { get; set; }
@@ -20,6 +20,6 @@ namespace PMS.Harrier.DataAccessLayer.Models
         public virtual Account Account { get; set; }
         public virtual ICollection<ProjectDeveloper> ProjectDeveloper { get; set; }
         public virtual ICollection<StageTeam> StageTeam { get; set; }
-        public virtual ICollection<TechnologyDeveloper.TechnologiesDeveloper> TechnologiesDeveloper { get; set; }
+        public virtual ICollection<TechnologyDeveloper> TechnologiesDeveloper { get; set; }
     }
 }

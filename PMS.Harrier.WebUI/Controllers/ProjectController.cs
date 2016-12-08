@@ -9,7 +9,7 @@ using PMS.Harrier.DataAccessLayer.Models;
 
 namespace PMS.Harrier.WebUI.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class ProjectController : Controller
     {
         private readonly IProjectLogic _projectLogic;
@@ -37,7 +37,7 @@ namespace PMS.Harrier.WebUI.Controllers
             if (!ModelState.IsValid)
                 return View(project);
             
-            project.CreationDateTime = DateTime.Now;
+            project.StartDate = DateTime.Now;
             _projectLogic.AddNewProject(project);
             return RedirectToAction("Index");
         }

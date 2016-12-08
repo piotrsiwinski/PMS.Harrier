@@ -5,7 +5,7 @@ using PMS.Harrier.DataAccessLayer.Models.Metadata;
 
 namespace PMS.Harrier.DataAccessLayer.Models
 {
-    [MetadataType(typeof(ProjectMetadata))]
+    
     public class Project
     {
         public Project()
@@ -18,7 +18,7 @@ namespace PMS.Harrier.DataAccessLayer.Models
         }
 
         public int ProjectId { get; set; }
-        public int AccountId { get; set; }
+        //public int AccountId { get; set; }
         public string ProjectName { get; set; }
         public DateTime? StartDate { get; set; }
         public DateTime? DeathLine { get; set; }
@@ -30,7 +30,7 @@ namespace PMS.Harrier.DataAccessLayer.Models
         public int ProjectStatus { get; set; }
         public int ProjectLeaderId { get; set; }
 
-        public virtual Account Account { get; set; }
+        //public virtual Account Account { get; set; }
         public virtual ICollection<ProjectData> ProjectData { get; set; }
         public virtual ICollection<ProjectDeveloper> ProjectDeveloper { get; set; }
         public virtual ICollection<ProjectStage> ProjectStage { get; set; }

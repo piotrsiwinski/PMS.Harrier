@@ -2,7 +2,7 @@
 {
     public class AccountAddress
     {
-        public int AccountAdressesId { get; set; }
+        public int AccountAddressId { get; set; }
         public int AccountId { get; set; }
         public string PhoneNumber { get; set; }
         public string Street { get; set; }

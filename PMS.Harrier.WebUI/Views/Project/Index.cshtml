@@ -19,13 +19,13 @@
             @foreach (var p in @Model)
             {
                 <tr>
-                    <td>@p.Name</td>
-                    <td>@p.CreationDateTime</td>
+                    <td>@p.ProjectName</td>
+                    <td>@p.StartDate</td>
                     <td>
                         
-                        @Html.ActionLink("Szczegóły", "Details", new {id = p.Id}, new {@class = "btn btn-info"})
-                        @Html.ActionLink("Edytuj", "Create", new {id = p.Id}, new {@class = "btn btn-primary"})
-                        @Html.ActionLink("Usuń", "Index", new {id = p.Id}, new {@class = "btn btn-danger"})
+                        @Html.ActionLink("Szczegóły", "Details", new {id = p.ProjectId}, new {@class = "btn btn-info"})
+                        @Html.ActionLink("Edytuj", "Create", new {id = p.ProjectId }, new {@class = "btn btn-primary"})
+                        @Html.ActionLink("Usuń", "Index", new {id = p.ProjectId }, new {@class = "btn btn-danger"})
                     </td>
                 </tr>
             }
