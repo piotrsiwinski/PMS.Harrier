@@ -1,6 +1,6 @@
 ﻿namespace PMS.Harrier.DataAccessLayer.ViewModels.ManageViewModels
 {
-    public class OverviewViewModel
+    public class AccountOverviewViewModel
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

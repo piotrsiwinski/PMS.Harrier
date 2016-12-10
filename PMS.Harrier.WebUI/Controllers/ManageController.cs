@@ -16,7 +16,7 @@ namespace PMS.Harrier.WebUI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-        private IAccountLogic _accountLogic;
+        private readonly IAccountLogic _accountLogic;
 
         public ManageController(IAccountLogic accountLogic)
         {
@@ -30,30 +30,7 @@ namespace PMS.Harrier.WebUI.Controllers
             _accountLogic = accountLogic;
         }
 
-        public ApplicationSignInManager SignInManager
-        {
-            get
-            {
-                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
-            }
-            private set 
-            { 
-                _signInManager = value; 
-            }
-        }
-
-        public ApplicationUserManager UserManager
-        {
-            get
-            {
-                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
-            }
-            private set
-            {
-                _userManager = value;
-            }
-        }
-
+        
         //
         // GET: /Manage/Index
         public async Task<ActionResult> Index(ManageMessageId? message)
@@ -82,7 +59,7 @@ namespace PMS.Harrier.WebUI.Controllers
         public ActionResult AccountOverview()
         {
             var accountDetails = _accountLogic.GetAccountDetails(User.Identity.GetUserId());
-            return View(viewModel);
+            return View(accountDetails);
         }
 
         //
@@ -343,7 +320,32 @@ namespace PMS.Harrier.WebUI.Controllers
             base.Dispose(disposing);
         }
 
-#region Helpers
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
+        }
+
+
+        #region Helpers
         // Used for XSRF protection when adding external logins
         private const string XsrfKey = "XsrfId";
 

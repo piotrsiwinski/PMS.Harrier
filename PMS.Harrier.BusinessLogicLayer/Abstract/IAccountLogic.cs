@@ -4,6 +4,6 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
 {
     public interface IAccountLogic
     {
-        OverviewViewModel GetAccountDetails(string accountId);
+        AccountOverviewViewModel GetAccountDetails(string accountId);
     }
 }

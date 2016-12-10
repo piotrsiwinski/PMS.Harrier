@@ -13,10 +13,10 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             _unitOfWork = unitOfWork;
         }
 
-        public OverviewViewModel GetAccountDetails(string accountId)
+        public AccountOverviewViewModel GetAccountDetails(string accountId)
         {
             var account = _unitOfWork.AccountRepository.GetAccount(accountId);
-            var result = new OverviewViewModel
+            var result = new AccountOverviewViewModel
             {
                 FirstName = account.FirstName,
                 LastName = account.LastName,
