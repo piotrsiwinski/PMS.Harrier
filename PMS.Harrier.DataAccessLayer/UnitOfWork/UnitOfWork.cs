@@ -12,9 +12,12 @@ namespace PMS.Harrier.DataAccessLayer.UnitOfWork
         {
             _dbContext = context;
             Projects = new ProjectRepository(_dbContext);
+            Accounts = new AccountRepository(_dbContext);
         }
 
         public IProjectRepository Projects { get; }
+        public IAccountRepository Accounts { get; }
+
         public int Complete()
         {
             return _dbContext.SaveChanges();

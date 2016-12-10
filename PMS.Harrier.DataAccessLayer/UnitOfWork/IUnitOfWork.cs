@@ -7,6 +7,7 @@ namespace PMS.Harrier.DataAccessLayer.UnitOfWork
     public interface IUnitOfWork : IDisposable
     {
         IProjectRepository Projects { get; }
+        IAccountRepository Accounts { get; }
         int Complete();
     }
 }

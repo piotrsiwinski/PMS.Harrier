@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace PMS.Harrier.DataAccessLayer.Repository.Abstract
+namespace PMS.Harrier.DataAccessLayer.Repository.AbstractRepository
 {
     public interface IRepository<TEntity> where TEntity : class
     {

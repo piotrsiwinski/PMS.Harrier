@@ -3,7 +3,7 @@ using System.Data.Entity;
 using System.Linq;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
-using PMS.Harrier.DataAccessLayer.Repository.Abstract;
+using PMS.Harrier.DataAccessLayer.Repository.AbstractRepository;
 using PMS.Harrier.DataAccessLayer.Repository.Interfaces;
 
 namespace PMS.Harrier.DataAccessLayer.Repository
@@ -13,7 +13,6 @@ namespace PMS.Harrier.DataAccessLayer.Repository
         public ProjectRepository(DbContext context) : base(context)
         {
         }
-
 
         public IEnumerable<Project> GetAllProjects()
         {
@@ -30,7 +29,5 @@ namespace PMS.Harrier.DataAccessLayer.Repository
             var result = EfDbContext.Projects.FirstOrDefault(p => p.ProjectName == name);
             return result;
         }
-
-        public EfDbContext EfDbContext => Context as EfDbContext;
     }
 }

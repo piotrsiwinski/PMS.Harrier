@@ -109,10 +109,12 @@
     <Compile Include="Models\Technology.cs" />
     <Compile Include="Models\TechnologyDeveloper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\AccountRepository.cs" />
+    <Compile Include="Repository\Interfaces\IAccountRepository.cs" />
     <Compile Include="Repository\Interfaces\IProjectRepository.cs" />
-    <Compile Include="Repository\Abstract\IRepository.cs" />
+    <Compile Include="Repository\AbstractRepository\IRepository.cs" />
     <Compile Include="Repository\ProjectRepository.cs" />
-    <Compile Include="Repository\Abstract\Repository.cs" />
+    <Compile Include="Repository\AbstractRepository\Repository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
   </ItemGroup>
