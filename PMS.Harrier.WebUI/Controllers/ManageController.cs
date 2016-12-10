@@ -75,6 +75,11 @@ namespace PMS.Harrier.WebUI.Controllers
             return View(model);
         }
 
+        public ActionResult AccountOverview()
+        {
+            return View();
+        }
+
         //
         // POST: /Manage/RemoveLogin
         [HttpPost]
