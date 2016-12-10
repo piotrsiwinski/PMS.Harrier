@@ -1,4 +1,6 @@
-﻿using System.Data.Entity;
+﻿using System;
+using System.Data.Entity;
+using System.Linq;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.Repository.AbstractRepository;
@@ -11,6 +13,13 @@ namespace PMS.Harrier.DataAccessLayer.Repository
         public AccountRepository(EfDbContext context) : base(context)
         {
 
+        }
+
+        public Account GetAccount(string id)
+        {
+            if(id == null)
+                throw new ArgumentException(nameof(id));
+            return Context.Users.FirstOrDefault(n => n.Id == id);
         }
     }
 }

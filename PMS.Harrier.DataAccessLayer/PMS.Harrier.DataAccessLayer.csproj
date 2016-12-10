@@ -96,6 +96,7 @@
     <Compile Include="Initializers\CustomDbInitializer.cs" />
     <Compile Include="Models\AccountAddress.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\CustomAccount.cs" />
     <Compile Include="Models\Developer.cs" />
     <Compile Include="Models\Account.cs" />
     <Compile Include="Models\Metadata\ProjectMetadata.cs" />

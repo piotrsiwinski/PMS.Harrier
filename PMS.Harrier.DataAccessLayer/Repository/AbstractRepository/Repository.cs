@@ -9,46 +9,45 @@ namespace PMS.Harrier.DataAccessLayer.Repository.AbstractRepository
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly EfDbContext EfContext;
+        protected readonly EfDbContext Context;
 
         protected Repository(EfDbContext context)
         {
-            EfContext = context;
+            Context = context;
         }
         public TEntity Get(int id)
         {
-            return EfContext.Set<TEntity>().Find(id);
+            return Context.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> GetAll()
         {
-            return EfContext.Set<TEntity>().ToList();
+            return Context.Set<TEntity>().ToList();
         }
 
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
-            return EfContext.Set<TEntity>().Where(predicate);
+            return Context.Set<TEntity>().Where(predicate);
         }
 
         public void Add(TEntity entity)
         {
-            EfContext.Set<TEntity>().Add(entity);
+            Context.Set<TEntity>().Add(entity);
         }
 
         public void AddRange(IEnumerable<TEntity> entities)
         {
-            EfContext.Set<TEntity>().AddRange(entities);
+            Context.Set<TEntity>().AddRange(entities);
         }
 
         public void Remove(TEntity entity)
         {
-            EfContext.Set<TEntity>().Remove(entity);
+            Context.Set<TEntity>().Remove(entity);
         }
 
         public void RemoveRange(IEnumerable<TEntity> entities)
         {
-            EfContext.Set<TEntity>().RemoveRange(entities);
+            Context.Set<TEntity>().RemoveRange(entities);
         }
-        protected EfDbContext EfDbContext => EfContext as EfDbContext;
     }
 }

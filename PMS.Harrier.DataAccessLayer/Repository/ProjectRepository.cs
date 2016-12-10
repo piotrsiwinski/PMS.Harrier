@@ -16,7 +16,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository
 
         public IEnumerable<Project> GetAllProjects()
         {
-            return EfDbContext.Projects.ToList();
+            return Context.Projects.ToList();
         }
 
         public void GetProjectsWithProjectManagers()
@@ -26,7 +26,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository
 
         public Project GetProjectByName(string name)
         {
-            var result = EfDbContext.Projects.FirstOrDefault(p => p.ProjectName == name);
+            var result = Context.Projects.FirstOrDefault(p => p.ProjectName == name);
             return result;
         }
     }

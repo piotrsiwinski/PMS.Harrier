@@ -17,25 +17,25 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
 
         public IEnumerable<Project> GetAllProjects()
         {
-            return _unitOfWork.Projects.GetAllProjects();
+            return _unitOfWork.ProjectRepository.GetAllProjects();
         }
 
         public Project GetProject(int id)
         {
-            return _unitOfWork.Projects.Get(id);
+            return _unitOfWork.ProjectRepository.Get(id);
         }
 
         public void AddNewProject(Project project)
         {
             if(project == null)
                 throw new ArgumentNullException(nameof(project));
-            _unitOfWork.Projects.Add(project);
+            _unitOfWork.ProjectRepository.Add(project);
             _unitOfWork.Complete();
         }
 
         public bool IsProjectNameAvailable(string name)
         {
-            var result = _unitOfWork.Projects.GetProjectByName(name);
+            var result = _unitOfWork.ProjectRepository.GetProjectByName(name);
             return result == null;
         }
     }
