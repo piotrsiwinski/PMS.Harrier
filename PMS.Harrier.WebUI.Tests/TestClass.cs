@@ -12,8 +12,8 @@ namespace PMS.Harrier.WebUI.Tests
         [TestMethod]
         public void Test()
         {
-            IUnitOfWork unitOfWork = new UnitOfWork(new EfDbContext());
-            var result = unitOfWork.Projects.GetAllProjects();
+            //IUnitOfWork unitOfWork = new UnitOfWork(new EfDbContext());
+            //var result = unitOfWork.Projects.GetAllProjects();
 
         }
     }

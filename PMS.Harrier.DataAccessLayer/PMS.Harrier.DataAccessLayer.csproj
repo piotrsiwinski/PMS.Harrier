@@ -117,6 +117,7 @@
     <Compile Include="Repository\AbstractRepository\Repository.cs" />
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
+    <Compile Include="ViewModels\ManageViewModels\OverviewViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />

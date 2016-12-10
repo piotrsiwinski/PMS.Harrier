@@ -1,4 +1,5 @@
-﻿using PMS.Harrier.DataAccessLayer.Concrete;
+﻿using System.Data.Entity;
+using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Repository;
 using PMS.Harrier.DataAccessLayer.Repository.Interfaces;
 
@@ -8,11 +9,11 @@ namespace PMS.Harrier.DataAccessLayer.UnitOfWork
     {
         private readonly EfDbContext _dbContext;
 
-        public UnitOfWork(EfDbContext context)
+        public UnitOfWork(EfDbContext context, IProjectRepository projectRepository, IAccountRepository accountRepository)
         {
             _dbContext = context;
-            Projects = new ProjectRepository(_dbContext);
-            Accounts = new AccountRepository(_dbContext);
+            Projects = projectRepository;
+            Accounts = accountRepository;
         }
 
         public IProjectRepository Projects { get; }

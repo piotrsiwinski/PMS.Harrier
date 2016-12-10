@@ -10,7 +10,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository
 {
     public class ProjectRepository : Repository<Project>, IProjectRepository
     {
-        public ProjectRepository(DbContext context) : base(context)
+        public ProjectRepository(EfDbContext context) : base(context)
         {
         }
 

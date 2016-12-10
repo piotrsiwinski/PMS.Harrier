@@ -9,12 +9,6 @@ namespace PMS.Harrier.WebUI.Controllers
 {
     public class HomeController : Controller
     {
-        private IProjectLogic _projectLogic;
-
-        public HomeController(IProjectLogic projectLogic)
-        {
-            _projectLogic = projectLogic;
-        }
         public ActionResult Index()
         {
             return View();

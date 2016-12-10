@@ -9,9 +9,9 @@ namespace PMS.Harrier.DataAccessLayer.Repository.AbstractRepository
 {
     public abstract class Repository<TEntity> : IRepository<TEntity> where TEntity : class
     {
-        protected readonly DbContext EfContext;
+        protected readonly EfDbContext EfContext;
 
-        protected Repository(DbContext context)
+        protected Repository(EfDbContext context)
         {
             EfContext = context;
         }

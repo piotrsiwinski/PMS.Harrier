@@ -8,7 +8,7 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
 {
     public class ProjectLogic : IProjectLogic
     {
-        private IUnitOfWork _unitOfWork;
+        private readonly IUnitOfWork _unitOfWork;
 
         public ProjectLogic(IUnitOfWork unitOfWork)
         {
