@@ -13,7 +13,7 @@ namespace PMS.Harrier.DataAccessLayer.Models
             this.StageTeam = new HashSet<StageTeam>();
             this.TechnologiesDeveloper = new HashSet<TechnologyDeveloper>();
         }
-        public string DeveloperId { get; set; }
+        public int DeveloperId { get; set; }
         public string AccountId { get; set; }
         public string ExperienceFromDate { get; set; }
         public string CostPerHour { get; set; }
