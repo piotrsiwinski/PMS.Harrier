@@ -16,18 +16,9 @@ namespace PMS.Harrier.DataAccessLayer.Models
         public Account()
         {
             this.AccountAdresses = new HashSet<AccountAddress>();
-            this.Developer = new HashSet<Developer>();
             this.Project = new HashSet<Project>();
         }
-        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Account> manager)
-        {
-            // Note the authenticationType must match the one defined in CookieAuthenticationOptions.AuthenticationType
-            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
-            // Add custom user claims here
-            return userIdentity;
-        }
-
-        public int AccountId { get; set; }
+        
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public string Location { get; set; }
@@ -38,8 +29,14 @@ namespace PMS.Harrier.DataAccessLayer.Models
         public string EmailHash { get; set; }
         public string AccountToken { get; set; }
 
+        public virtual Developer Developer { get; set; }
         public virtual ICollection<AccountAddress> AccountAdresses { get; set; }
-        public virtual ICollection<Developer> Developer { get; set; }
         public virtual ICollection<Project> Project { get; set; }
+
+        public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Account> manager)
+        {
+            var userIdentity = await manager.CreateIdentityAsync(this, DefaultAuthenticationTypes.ApplicationCookie);
+            return userIdentity;
+        }
     }
 }

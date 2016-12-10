@@ -1,4 +1,7 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.Owin.Security;
 
 namespace PMS.Harrier.DataAccessLayer.Models
 {
@@ -10,13 +13,12 @@ namespace PMS.Harrier.DataAccessLayer.Models
             this.StageTeam = new HashSet<StageTeam>();
             this.TechnologiesDeveloper = new HashSet<TechnologyDeveloper>();
         }
-
-        public int DeveloperId { get; set; }
-        public int AccountId { get; set; }
+        [Key, ForeignKey("Account")]
+        public string DeveloperId { get; set; }
+        public string AccountId { get; set; }
         public string ExperienceFromDate { get; set; }
         public string CostPerHour { get; set; }
         public string WeekAvailability { get; set; }
-
         public virtual Account Account { get; set; }
         public virtual ICollection<ProjectDeveloper> ProjectDeveloper { get; set; }
         public virtual ICollection<StageTeam> StageTeam { get; set; }

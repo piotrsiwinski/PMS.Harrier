@@ -15,7 +15,7 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            //modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+            modelBuilder.Entity<Account>().ToTable("Accounts", "dbo").Property(p => p.Id).HasColumnName("AccountId");
             base.OnModelCreating(modelBuilder);
         }
         public static EfDbContext Create()
@@ -23,8 +23,6 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
             return new EfDbContext();
         }
 
-        //public DbSet<Project> ProjectsOld { get; set; }
-        //public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<AccountAddress> AccountAdresses { get; set; }
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Developer> Developers { get; set; }
