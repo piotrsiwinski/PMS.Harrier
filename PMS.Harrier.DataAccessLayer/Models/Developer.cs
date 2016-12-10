@@ -14,7 +14,6 @@ namespace PMS.Harrier.DataAccessLayer.Models
             this.TechnologiesDeveloper = new HashSet<TechnologyDeveloper>();
         }
         public int DeveloperId { get; set; }
-        public string AccountId { get; set; }
         public string ExperienceFromDate { get; set; }
         public string CostPerHour { get; set; }
         public string WeekAvailability { get; set; }

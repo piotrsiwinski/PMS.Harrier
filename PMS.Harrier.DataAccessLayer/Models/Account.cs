@@ -19,7 +19,6 @@ namespace PMS.Harrier.DataAccessLayer.Models
         
         public string FirstName { get; set; }
         public string LastName { get; set; }
-        public string Location { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsEnabled { get; set; }
         public DateTime? RegisterDate { get; set; }
