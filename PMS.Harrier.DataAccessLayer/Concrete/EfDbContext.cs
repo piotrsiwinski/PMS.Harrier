@@ -16,6 +16,7 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Account>().ToTable("Accounts", "dbo").Property(p => p.Id).HasColumnName("AccountId");
+            modelBuilder.Entity<Account>().HasOptional(d => d.Developer).WithRequired(p => p.Account);
             base.OnModelCreating(modelBuilder);
         }
         public static EfDbContext Create()

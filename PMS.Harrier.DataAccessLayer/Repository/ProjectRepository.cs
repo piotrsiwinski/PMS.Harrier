@@ -4,6 +4,7 @@ using System.Linq;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.Repository.Abstract;
+using PMS.Harrier.DataAccessLayer.Repository.Interfaces;
 
 namespace PMS.Harrier.DataAccessLayer.Repository
 {

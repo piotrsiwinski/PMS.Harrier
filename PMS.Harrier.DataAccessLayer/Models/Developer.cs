@@ -13,7 +13,6 @@ namespace PMS.Harrier.DataAccessLayer.Models
             this.StageTeam = new HashSet<StageTeam>();
             this.TechnologiesDeveloper = new HashSet<TechnologyDeveloper>();
         }
-        [Key, ForeignKey("Account")]
         public string DeveloperId { get; set; }
         public string AccountId { get; set; }
         public string ExperienceFromDate { get; set; }

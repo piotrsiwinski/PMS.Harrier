@@ -28,7 +28,6 @@ namespace PMS.Harrier.DataAccessLayer.Models
         public DateTime? RegisterDate { get; set; }
         public string EmailHash { get; set; }
         public string AccountToken { get; set; }
-
         public virtual Developer Developer { get; set; }
         public virtual ICollection<AccountAddress> AccountAdresses { get; set; }
         public virtual ICollection<Project> Project { get; set; }

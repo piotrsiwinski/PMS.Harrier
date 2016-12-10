@@ -6,6 +6,7 @@ using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.BusinessLogicLayer.Implementations;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Repository;
+using PMS.Harrier.DataAccessLayer.Repository.Interfaces;
 using PMS.Harrier.DataAccessLayer.UnitOfWork;
 
 namespace PMS.Harrier.WebUI.DependencyInjection
