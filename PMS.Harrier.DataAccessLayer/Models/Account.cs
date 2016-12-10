@@ -12,10 +12,8 @@ namespace PMS.Harrier.DataAccessLayer.Models
     // You can add profile data for the user by adding more properties to your ApplicationUser class, please visit http://go.microsoft.com/fwlink/?LinkID=317594 to learn more.
     public class Account : IdentityUser
     {
-
         public Account()
         {
-            this.AccountAdresses = new HashSet<AccountAddress>();
             this.Project = new HashSet<Project>();
         }
         
@@ -24,12 +22,11 @@ namespace PMS.Harrier.DataAccessLayer.Models
         public string Location { get; set; }
         public bool? IsActive { get; set; }
         public bool? IsEnabled { get; set; }
-        public string Country { get; set; }
         public DateTime? RegisterDate { get; set; }
         public string EmailHash { get; set; }
         public string AccountToken { get; set; }
         public virtual Developer Developer { get; set; }
-        public virtual ICollection<AccountAddress> AccountAdresses { get; set; }
+        public virtual AccountAddress AccountAdress { get; set; }
         public virtual ICollection<Project> Project { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<Account> manager)

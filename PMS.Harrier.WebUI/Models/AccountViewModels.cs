@@ -70,14 +70,26 @@ namespace PMS.Harrier.WebUI.Models
         [Required]
         [Display(Name = "Nazwisko")]
         public string LastName { get; set; }
-        [Required]
-        [Display(Name="Kraj")]
-        public string Country { get; set; }
+        
 
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
         public string Email { get; set; }
+
+        [Display(Name = "Ulica")]
+        public string Street { get; set; }
+        [Display(Name = "Miasto")]
+        public string City { get; set; }
+        [Display(Name = "Numer telefonu")]
+        public string PhoneNumber { get; set; }
+        [Display(Name = "To jest mój głowny adres")]
+        public bool IsMainAddress { get; set; }
+
+
+        [Required]
+        [Display(Name = "Kraj")]
+        public string Country { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]

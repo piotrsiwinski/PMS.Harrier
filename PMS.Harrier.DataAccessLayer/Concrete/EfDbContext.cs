@@ -17,6 +17,7 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
         {
             modelBuilder.Entity<Account>().ToTable("Accounts", "dbo").Property(p => p.Id).HasColumnName("AccountId");
             modelBuilder.Entity<Account>().HasOptional(d => d.Developer).WithRequired(p => p.Account);
+            modelBuilder.Entity<Account>().HasOptional(d => d.AccountAdress).WithRequired(p => p.Account);
             base.OnModelCreating(modelBuilder);
         }
         public static EfDbContext Create()

@@ -149,17 +149,26 @@ namespace PMS.Harrier.WebUI.Controllers
             if (!ModelState.IsValid)
                 return View(model);
             var developer = new Developer { CostPerHour = "25"};
+            var address = new AccountAddress
+            {
+                Street = model.Street,
+                City = model.City,
+                PhoneNumber = model.PhoneNumber,
+                Country = model.Country,
+                IsMainAdress = model.IsMainAddress
+            };
+
             var user = new Account
             {
                 FirstName = model.FirstName,
                 LastName = model.LastName,
-                Country = model.Country,
                 UserName = model.Email,
                 Email = model.Email,
                 IsActive = true,
                 IsEnabled = true,
                 RegisterDate = DateTime.Now,
-                Developer = developer
+                Developer = developer,
+                AccountAdress = address
             };
 
             var result = await UserManager.CreateAsync(user, model.Password);
