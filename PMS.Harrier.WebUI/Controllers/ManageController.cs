@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.WebUI.Models;
 
 namespace PMS.Harrier.WebUI.Controllers
@@ -15,15 +16,18 @@ namespace PMS.Harrier.WebUI.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
+        private IAccountLogic _accountLogic;
 
-        public ManageController()
+        public ManageController(IAccountLogic accountLogic)
         {
+            _accountLogic = accountLogic;
         }
 
-        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        public ManageController(ApplicationUserManager userManager, ApplicationSignInManager signInManager, IAccountLogic accountLogic)
         {
             UserManager = userManager;
             SignInManager = signInManager;
+            _accountLogic = accountLogic;
         }
 
         public ApplicationSignInManager SignInManager
@@ -77,7 +81,8 @@ namespace PMS.Harrier.WebUI.Controllers
 
         public ActionResult AccountOverview()
         {
-            return View();
+            var accountDetails = _accountLogic.GetAccountDetails(User.Identity.GetUserId());
+            return View(viewModel);
         }
 
         //

@@ -15,7 +15,17 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
 
         public OverviewViewModel GetAccountDetails(string accountId)
         {
-            throw new System.NotImplementedException();
+            var account = _unitOfWork.AccountRepository.GetAccount(accountId);
+            var result = new OverviewViewModel
+            {
+                FirstName = account.FirstName,
+                LastName = account.LastName,
+                City = account.AccountAdress.City,
+                Country = account.AccountAdress.Country,
+                Street = account.AccountAdress.Street,
+                PhoneNumber = account.AccountAdress.PhoneNumber
+            };
+            return result;
         }
     }
 }

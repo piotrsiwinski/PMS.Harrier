@@ -1,5 +1,67 @@
-﻿@model dynamic
+﻿@model PMS.Harrier.DataAccessLayer.ViewModels.ManageViewModels.OverviewViewModel
 
 @{
     ViewBag.Title = "Przegląd konta";
 }
+
+<h2>Szczegóły konta</h2>
+
+<div>
+    <h4>Projekt</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <!-- FirstName -->
+        <dt>
+            @Html.LabelFor(p => p.FirstName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(p => p.FirstName)
+        </dd>
+        
+
+        <!-- LastName -->
+        <dt>
+            @Html.LabelFor(p => p.LastName)
+        </dt>
+        <dd>
+            @Html.DisplayFor(p => p.LastName)
+        </dd>
+        
+        
+        <!-- Street -->
+        <dt>
+            @Html.LabelFor(p => p.Street)
+        </dt>
+        <dd>
+            @Html.DisplayFor(p => p.City)
+        </dd>
+        
+        <!-- City -->
+        <dt>
+            @Html.LabelFor(p => p.City)
+        </dt>
+        <dd>
+            @Html.DisplayFor(p => p.City)
+        </dd>
+        
+        
+        <!-- Country -->
+        <dt>
+            @Html.LabelFor(p => p.Country)
+        </dt>
+        <dd>
+            @Html.DisplayFor(p => p.Country)
+        </dd>
+        
+
+        <!-- PhoneNumber -->
+        <dt>
+            @Html.LabelFor(p => p.PhoneNumber)
+        </dt>
+        <dd>
+            @Html.DisplayFor(p => p.PhoneNumber)
+        </dd>
+
+
+    </dl>
+</div>

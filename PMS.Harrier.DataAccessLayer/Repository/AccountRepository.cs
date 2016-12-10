@@ -15,11 +15,21 @@ namespace PMS.Harrier.DataAccessLayer.Repository
 
         }
 
-        public Account GetAccount(string id)
+        public CustomAccount GetAccount(string id)
         {
             if(id == null)
                 throw new ArgumentException(nameof(id));
-            return Context.Users.FirstOrDefault(n => n.Id == id);
+            var account = Context.Users.FirstOrDefault(n => n.Id == id);
+
+            //simple mapping between Account and CustomAccount to be free of Identity Entity Framework
+            var result = new CustomAccount
+            {
+                FirstName = account.FirstName,
+                LastName = account.LastName,
+                Developer = account.Developer,
+                AccountAdress = account.AccountAdress
+            };
+            return result;
         }
     }
 }

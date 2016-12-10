@@ -5,6 +5,6 @@ namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
 {
     public interface IAccountRepository : IRepository<Account>
     {
-        Account GetAccount(string id);
+        CustomAccount GetAccount(string id);
     }
 }
