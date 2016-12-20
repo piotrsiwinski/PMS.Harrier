@@ -18,13 +18,17 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
 
         public List<DeveloperViewModel> GetAllDevelopers()
         {
-            
             return _unitOfWork.DeveloperRepository.GetAllDevelopers();
         }
 
-        public DeveloperViewModel Get(int id)
+        public DeveloperViewModel GetDeveloper(int id)
         {
             return _unitOfWork.DeveloperRepository.GetDeveloper(id);
+        }
+
+        public void AddDeveloper(DeveloperViewModel developer)
+        {
+           _unitOfWork.DeveloperRepository.AddDeveloper(developer);
         }
     }
 }

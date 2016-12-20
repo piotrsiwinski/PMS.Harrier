@@ -10,5 +10,6 @@ namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
         List<DeveloperViewModel> GetAllDevelopers();
         DeveloperViewModel GetDeveloper(int id);
 
+        void AddDeveloper(DeveloperViewModel developerViewModel);
     }
 }

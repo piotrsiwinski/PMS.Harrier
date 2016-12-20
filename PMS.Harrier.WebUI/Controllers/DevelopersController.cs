@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
+using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
 
 namespace PMS.Harrier.WebUI.Controllers
 {
@@ -38,7 +39,7 @@ namespace PMS.Harrier.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var developer = _developerLogic.Get(id.Value);
+            var developer = _developerLogic.GetDeveloper(id.Value);
             if (developer == null)
             {
                 return HttpNotFound();
@@ -77,7 +78,7 @@ namespace PMS.Harrier.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Developer developer = db.Developers.Find(id);
+            var developer = _developerLogic.GetDeveloper(id.Value);
             if (developer == null)
             {
                 return HttpNotFound();
@@ -90,15 +91,12 @@ namespace PMS.Harrier.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DeveloperId,ExperienceFromDate,CostPerHour,WeekAvailability")] Developer developer)
+        public ActionResult Edit([Bind(Include = "DeveloperId,ExperienceFromDate,CostPerHour,WeekAvailability")] DeveloperViewModel developer)
         {
-            if (ModelState.IsValid)
-            {
-                db.Entry(developer).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(developer);
+            if (!ModelState.IsValid)
+                return View();
+            _developerLogic.AddDeveloper(developer);
+            return RedirectToAction("Index");
         }
 
         // GET: Developers/Delete/5
