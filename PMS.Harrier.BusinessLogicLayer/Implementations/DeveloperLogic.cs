@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.UnitOfWork;
+using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
 
 namespace PMS.Harrier.BusinessLogicLayer.Implementations
 {
@@ -15,8 +16,9 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             _unitOfWork = unitOfWork;
         }
 
-        public List<Developer> GetAllDevelopers()
+        public List<DeveloperViewModel> GetAllDevelopers()
         {
+            
             return _unitOfWork.DeveloperRepository.GetAllDevelopers();
         }
 

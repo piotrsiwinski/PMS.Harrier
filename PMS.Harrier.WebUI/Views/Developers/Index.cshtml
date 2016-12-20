@@ -1,4 +1,4 @@
-﻿@model IEnumerable<PMS.Harrier.DataAccessLayer.Models.Developer>
+﻿@model IEnumerable<PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels.DeveloperViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,6 +12,12 @@
 </p>
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.ExperienceFromDate)
         </th>
@@ -27,6 +33,12 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.ExperienceFromDate)
         </td>
         <td>
@@ -36,9 +48,9 @@
             @Html.DisplayFor(modelItem => item.WeekAvailability)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.DeveloperId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.DeveloperId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.DeveloperId })
+            @Html.ActionLink("Edit", "Edit", new {id = item.DeveloperId}) |
+            @Html.ActionLink("Details", "Details", new {id = item.DeveloperId}) |
+            @Html.ActionLink("Delete", "Delete", new {id = item.DeveloperId})
         </td>
     </tr>
 }
