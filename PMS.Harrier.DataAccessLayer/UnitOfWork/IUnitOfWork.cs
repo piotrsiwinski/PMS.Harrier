@@ -8,6 +8,7 @@ namespace PMS.Harrier.DataAccessLayer.UnitOfWork
     {
         IProjectRepository ProjectRepository { get; }
         IAccountRepository AccountRepository { get; }
+        IDeveloperRepository DeveloperRepository{ get; }
         int Complete();
     }
 }

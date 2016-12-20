@@ -42,6 +42,16 @@ namespace PMS.Harrier.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult AddDeveloper()
+        {
+            return View();
+        }
+//        [HttpPost]
+//        public ActionResult AddDeveloper()
+//        {
+//            return View();
+//        }
+
         public JsonResult ValidateProjectName(string name)
         {
             var result = _projectLogic.IsProjectNameAvailable(name);

@@ -13,9 +13,6 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Account.Login)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.ExperienceFromDate)
         </th>
         <th>
@@ -29,9 +26,6 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Account.Login)
-        </td>
         <td>
             @Html.DisplayFor(modelItem => item.ExperienceFromDate)
         </td>

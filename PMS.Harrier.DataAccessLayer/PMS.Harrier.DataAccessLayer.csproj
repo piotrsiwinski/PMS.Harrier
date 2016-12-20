@@ -111,7 +111,9 @@
     <Compile Include="Models\TechnologyDeveloper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
+    <Compile Include="Repository\DeveloperRepository.cs" />
     <Compile Include="Repository\Interfaces\IAccountRepository.cs" />
+    <Compile Include="Repository\Interfaces\IDevelopersRepository.cs" />
     <Compile Include="Repository\Interfaces\IProjectRepository.cs" />
     <Compile Include="Repository\AbstractRepository\IRepository.cs" />
     <Compile Include="Repository\ProjectRepository.cs" />
@@ -119,6 +121,8 @@
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="ViewModels\ManageViewModels\OverviewViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModels\AddDeveloperViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModels\DeveloperViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />

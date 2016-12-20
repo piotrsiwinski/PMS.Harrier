@@ -42,8 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Abstract\IAccountLogic.cs" />
+    <Compile Include="Abstract\IDeveloperLogic.cs" />
     <Compile Include="Abstract\IProjectLogic.cs" />
     <Compile Include="Implementations\AccountLogic.cs" />
+    <Compile Include="Implementations\DeveloperLogic.cs" />
     <Compile Include="Implementations\ProjectLogic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

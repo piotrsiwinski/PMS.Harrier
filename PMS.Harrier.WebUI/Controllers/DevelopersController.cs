@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
 
@@ -13,13 +14,21 @@ namespace PMS.Harrier.WebUI.Controllers
 {
     public class DevelopersController : Controller
     {
+
+        private readonly IDeveloperLogic _developerLogic;
+
         private EfDbContext db = new EfDbContext();
+
+        public DevelopersController(IDeveloperLogic developerLogic)
+        {
+            _developerLogic = developerLogic;
+        }
 
         // GET: Developers
         public ActionResult Index()
         {
-            var developers = db.Developers.Include(d => d.Account);
-            return View(developers.ToList());
+            var developers = _developerLogic.GetAllDevelopers();
+            return View(developers);
         }
 
         // GET: Developers/Details/5
@@ -29,18 +38,18 @@ namespace PMS.Harrier.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Developer developer = db.Developers.Find(id);
+            var developer = _developerLogic.Get(id.Value);
             if (developer == null)
             {
                 return HttpNotFound();
             }
+
             return View(developer);
         }
 
         // GET: Developers/Create
         public ActionResult Create()
         {
-            ViewBag.AccountId = new SelectList(db.Accounts, "AccountId", "Login");
             return View();
         }
 
@@ -49,7 +58,7 @@ namespace PMS.Harrier.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DeveloperId,AccountId,ExperienceFromDate,CostPerHour,WeekAvailability")] Developer developer)
+        public ActionResult Create([Bind(Include = "DeveloperId,ExperienceFromDate,CostPerHour,WeekAvailability")] Developer developer)
         {
             if (ModelState.IsValid)
             {
@@ -58,7 +67,6 @@ namespace PMS.Harrier.WebUI.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.AccountId = new SelectList(db.Accounts, "AccountId", "Login", developer.AccountId);
             return View(developer);
         }
 
@@ -74,7 +82,6 @@ namespace PMS.Harrier.WebUI.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.AccountId = new SelectList(db.Accounts, "AccountId", "Login", developer.AccountId);
             return View(developer);
         }
 
@@ -83,7 +90,7 @@ namespace PMS.Harrier.WebUI.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "DeveloperId,AccountId,ExperienceFromDate,CostPerHour,WeekAvailability")] Developer developer)
+        public ActionResult Edit([Bind(Include = "DeveloperId,ExperienceFromDate,CostPerHour,WeekAvailability")] Developer developer)
         {
             if (ModelState.IsValid)
             {
@@ -91,7 +98,6 @@ namespace PMS.Harrier.WebUI.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.AccountId = new SelectList(db.Accounts, "AccountId", "Login", developer.AccountId);
             return View(developer);
         }
 
@@ -119,15 +125,6 @@ namespace PMS.Harrier.WebUI.Controllers
             db.Developers.Remove(developer);
             db.SaveChanges();
             return RedirectToAction("Index");
-        }
-
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

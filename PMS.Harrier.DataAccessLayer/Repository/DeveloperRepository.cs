@@ -1,0 +1,23 @@
+﻿
+
+using System.Collections.Generic;
+using System.Linq;
+using PMS.Harrier.DataAccessLayer.Concrete;
+using PMS.Harrier.DataAccessLayer.Models;
+using PMS.Harrier.DataAccessLayer.Repository.AbstractRepository;
+using PMS.Harrier.DataAccessLayer.Repository.Interfaces;
+
+namespace PMS.Harrier.DataAccessLayer.Repository
+{
+    public class DeveloperRepository : Repository<Developer>, IDeveloperRepository
+    {
+        public DeveloperRepository(EfDbContext context) : base(context)
+        {
+        }
+
+        public List<Developer> GetAllDevelopers()
+        {
+            return Context.Developers.ToList();
+        }
+    }
+}
