@@ -7,6 +7,6 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
     public interface IDeveloperLogic
     {
         List<DeveloperViewModel> GetAllDevelopers();
-        Developer Get(int id);
+        DeveloperViewModel Get(int id);
     }
 }

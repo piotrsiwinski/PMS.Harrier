@@ -22,9 +22,9 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             return _unitOfWork.DeveloperRepository.GetAllDevelopers();
         }
 
-        public Developer Get(int id)
+        public DeveloperViewModel Get(int id)
         {
-            return _unitOfWork.DeveloperRepository.Get(id);
+            return _unitOfWork.DeveloperRepository.GetDeveloper(id);
         }
     }
 }
