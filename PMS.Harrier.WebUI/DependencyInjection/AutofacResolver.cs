@@ -42,7 +42,7 @@ namespace PMS.Harrier.WebUI.DependencyInjection
             //Register Types here
             //builder.RegisterType<DbContext>().As<DbContext>();
             builder.RegisterType<EfDbContext>().As<EfDbContext>();
-           
+
             builder.RegisterType<ProjectRepository>().As<IProjectRepository>();
             builder.RegisterType<AccountRepository>().As<IAccountRepository>();
             builder.RegisterType<DeveloperRepository>().As<IDeveloperRepository>();

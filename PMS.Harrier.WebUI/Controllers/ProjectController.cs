@@ -4,7 +4,11 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using Microsoft.AspNet.Identity.EntityFramework;
+using Microsoft.AspNet.Identity.Owin;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
+using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
 
@@ -15,13 +19,18 @@ namespace PMS.Harrier.WebUI.Controllers
     {
         private readonly IProjectLogic _projectLogic;
         private readonly IDeveloperLogic _developerLogic;
+       
+        protected EfDbContext EfDbContext { get; set; }
+        protected UserManager<Account> UserManager { get; set; }
+
 
         public ProjectController(IProjectLogic projectLogic, IDeveloperLogic developerLogic)
         {
             _projectLogic = projectLogic;
             _developerLogic = developerLogic;
+            this.EfDbContext = new EfDbContext();
+            this.UserManager = new UserManager<Account>(new UserStore<Account>(this.EfDbContext));
         }
-
         // GET: Project
         public ActionResult Index()
         {
@@ -31,7 +40,10 @@ namespace PMS.Harrier.WebUI.Controllers
 
         public ActionResult MyProjects()
         {
-            var result = _projectLogic.GetAllProjects();
+            var user = this.UserManager.FindById(User.Identity.GetUserId());
+            if(user == null)
+                throw new NullReferenceException("Can't find user");
+            var result = user.Developer.ProjectDeveloper.Where(n => n.DeveloperId == user.Developer.DeveloperId).Select(n => n.Project);
             return View(result);
         }
 
