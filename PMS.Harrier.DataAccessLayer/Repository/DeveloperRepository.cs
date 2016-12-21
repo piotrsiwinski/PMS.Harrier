@@ -16,12 +16,9 @@ namespace PMS.Harrier.DataAccessLayer.Repository
             AutoMapper.Mapper
                 .CreateMap<Developer, DeveloperViewModel>()
                 .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
-                .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName));
+                .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
+                .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Account.Email));
             AutoMapper.Mapper.CreateMap<DeveloperViewModel, Developer>();
-//            AutoMapper.Mapper
-//                .CreateMap<DeveloperViewModel, Developer>()
-//                .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.FirstName))
-//                .ForMember(dest => dest.Account.LastName, opts => opts.MapFrom(src => src.LastName));
         }
 
         public List<DeveloperViewModel> GetAllDevelopers()

@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Models;
+using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
 
 namespace PMS.Harrier.WebUI.Controllers
 {
@@ -13,10 +14,12 @@ namespace PMS.Harrier.WebUI.Controllers
     public class ProjectController : Controller
     {
         private readonly IProjectLogic _projectLogic;
+        private readonly IDeveloperLogic _developerLogic;
 
-        public ProjectController(IProjectLogic projectLogic)
+        public ProjectController(IProjectLogic projectLogic, IDeveloperLogic developerLogic)
         {
             _projectLogic = projectLogic;
+            _developerLogic = developerLogic;
         }
 
         // GET: Project
@@ -41,16 +44,6 @@ namespace PMS.Harrier.WebUI.Controllers
             _projectLogic.AddNewProject(project);
             return RedirectToAction("Index");
         }
-
-        public ActionResult AddDeveloper()
-        {
-            return View();
-        }
-//        [HttpPost]
-//        public ActionResult AddDeveloper()
-//        {
-//            return View();
-//        }
 
         public JsonResult ValidateProjectName(string name)
         {

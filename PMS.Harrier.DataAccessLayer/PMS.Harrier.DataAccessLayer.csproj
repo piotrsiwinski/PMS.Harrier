@@ -129,7 +129,7 @@
     <Compile Include="UnitOfWork\IUnitOfWork.cs" />
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="ViewModels\ManageViewModels\OverviewViewModel.cs" />
-    <Compile Include="ViewModels\ProjectViewModels\AddDeveloperViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModels\ProjectDeveloperViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModels\DeveloperViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
