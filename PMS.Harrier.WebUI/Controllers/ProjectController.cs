@@ -29,6 +29,12 @@ namespace PMS.Harrier.WebUI.Controllers
             return View(result);
         }
 
+        public ActionResult MyProjects()
+        {
+            var result = _projectLogic.GetAllProjects();
+            return View(result);
+        }
+
         public ActionResult AddDeveloperToProject(int? id)
         {
             if (id == null)

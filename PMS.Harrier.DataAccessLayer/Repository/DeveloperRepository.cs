@@ -39,16 +39,10 @@ namespace PMS.Harrier.DataAccessLayer.Repository
             var developer = AutoMapper.Mapper.Map<DeveloperViewModel, Developer>(developerViewModel);
             Context.Entry(developer).State = EntityState.Modified;
             Context.SaveChanges();
-
-//            var entity = Context.Developers.Find(developer.DeveloperId);
-//            Context.Developers.Add(entity);
-
         }
 
         public void AddDevelopersToProject(List<ProjectDeveloperViewModel> developers)
         {
-//            var devs = AutoMapper.Mapper.Map<List<ProjectDeveloperViewModel>, List<Developer>>(developers);
-
             var result =
                 developers.Select(n => new ProjectDeveloper {DeveloperId = n.DeveloperId, ProjectId = n.ProjectId});
             Context.ProjectDeveloper.AddRange(result);
