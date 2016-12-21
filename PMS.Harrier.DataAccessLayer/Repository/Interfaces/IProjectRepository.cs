@@ -10,5 +10,6 @@ namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
         void GetProjectsWithProjectManagers();
 
         Project GetProjectByName(string name);
+        void AddProject(Project project);
     }
 }

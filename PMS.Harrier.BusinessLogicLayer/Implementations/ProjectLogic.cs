@@ -30,7 +30,7 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
         {
             if(project == null)
                 throw new ArgumentNullException(nameof(project));
-            _unitOfWork.ProjectRepository.Add(project);
+            _unitOfWork.ProjectRepository.AddProject(project);
             _unitOfWork.Complete();
         }
 

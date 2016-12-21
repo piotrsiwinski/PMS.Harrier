@@ -29,5 +29,11 @@ namespace PMS.Harrier.DataAccessLayer.Repository
             var result = Context.Projects.FirstOrDefault(p => p.ProjectName == name);
             return result;
         }
+
+        public void AddProject(Project project)
+        {
+            Context.Projects.Add(project);
+            Context.SaveChanges();
+        }
     }
 }

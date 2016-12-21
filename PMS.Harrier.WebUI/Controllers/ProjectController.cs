@@ -96,9 +96,9 @@ namespace PMS.Harrier.WebUI.Controllers
             return RedirectToAction("Index");
         }
 
-        public JsonResult ValidateProjectName(string name)
+        public JsonResult ValidateProjectName(string projectName)
         {
-            var result = _projectLogic.IsProjectNameAvailable(name);
+            var result = _projectLogic.IsProjectNameAvailable(projectName);
             return result 
                 ? Json(true, JsonRequestBehavior.AllowGet) 
                 : Json("Projekt o takiej nazwie już istnieje", JsonRequestBehavior.AllowGet);
