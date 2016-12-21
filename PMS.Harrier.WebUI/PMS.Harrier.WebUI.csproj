@@ -254,6 +254,7 @@
     <Content Include="Views\Developers\Details.cshtml" />
     <Content Include="Views\Developers\Edit.cshtml" />
     <Content Include="Views\Developers\Index.cshtml" />
+    <Content Include="Views\Project\AddDeveloperToProject.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

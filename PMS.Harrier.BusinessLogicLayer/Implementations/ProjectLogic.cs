@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.UnitOfWork;
+using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
 
 namespace PMS.Harrier.BusinessLogicLayer.Implementations
 {
@@ -37,6 +38,11 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
         {
             var result = _unitOfWork.ProjectRepository.GetProjectByName(name);
             return result == null;
+        }
+
+        public void AddDevelopersToProject(List<ProjectDeveloperViewModel> developers)
+        {
+            _unitOfWork.DeveloperRepository.AddDevelopersToProject(developers);
         }
     }
 }

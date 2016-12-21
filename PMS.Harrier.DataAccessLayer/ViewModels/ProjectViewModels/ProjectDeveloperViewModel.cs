@@ -13,7 +13,5 @@ namespace PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels
         public string CostPerHour { get; set; }
         public string WeekAvailability { get; set; }
         public bool IsSelected { get;set; }
-        public List<DeveloperViewModel> DevelopersList { get; set; }
-
     }
 }

@@ -29,6 +29,39 @@ namespace PMS.Harrier.WebUI.Controllers
             return View(result);
         }
 
+        public ActionResult AddDeveloperToProject(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var project = _projectLogic.GetProject(id.Value);
+            var developers = _developerLogic.GetAllDevelopers();
+            var model =
+                developers.Select(
+                    n =>
+                        new ProjectDeveloperViewModel
+                        {
+                            ProjectId = project.ProjectId,
+                            DeveloperId = n.DeveloperId,
+                            FirstName = n.FirstName,
+                            LastName = n.LastName
+                        }).ToList();
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult AddDeveloperToProject(List<ProjectDeveloperViewModel> developers)
+        {
+            if (ModelState.IsValid)
+            {
+                _projectLogic.AddDevelopersToProject(developers.Where(n => n.IsSelected).ToList());
+                return RedirectToAction("Index");
+            }
+            return View(developers);
+
+        }
+
+
         public ActionResult Create()
         {
             return View();

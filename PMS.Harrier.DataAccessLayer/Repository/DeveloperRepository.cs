@@ -19,6 +19,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository
                 .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
                 .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Account.Email));
             AutoMapper.Mapper.CreateMap<DeveloperViewModel, Developer>();
+            AutoMapper.Mapper.CreateMap<ProjectDeveloperViewModel, Developer>();
         }
 
         public List<DeveloperViewModel> GetAllDevelopers()
@@ -41,6 +42,17 @@ namespace PMS.Harrier.DataAccessLayer.Repository
 
 //            var entity = Context.Developers.Find(developer.DeveloperId);
 //            Context.Developers.Add(entity);
+
+        }
+
+        public void AddDevelopersToProject(List<ProjectDeveloperViewModel> developers)
+        {
+//            var devs = AutoMapper.Mapper.Map<List<ProjectDeveloperViewModel>, List<Developer>>(developers);
+
+            var result =
+                developers.Select(n => new ProjectDeveloper {DeveloperId = n.DeveloperId, ProjectId = n.ProjectId});
+            Context.ProjectDeveloper.AddRange(result);
+            Context.SaveChanges();
 
         }
     }

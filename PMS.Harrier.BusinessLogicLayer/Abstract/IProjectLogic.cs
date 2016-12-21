@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using PMS.Harrier.DataAccessLayer.Models;
+using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
 
 namespace PMS.Harrier.BusinessLogicLayer.Abstract
 {
@@ -12,5 +13,6 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
         void AddNewProject(Project project);
 
         bool IsProjectNameAvailable(string name);
+        void AddDevelopersToProject(List<ProjectDeveloperViewModel> developers);
     }
 }
