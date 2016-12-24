@@ -1,6 +1,6 @@
-﻿namespace PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels
+﻿namespace PMS.Harrier.WebUI.ViewModels
 {
-    public class DeveloperViewModelhgjgjh
+    public class DeveloperViewModel
     {
         public int DeveloperId { get; set; }
         public string FirstName { get; set; }

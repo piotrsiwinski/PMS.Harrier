@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.UnitOfWork;
@@ -16,9 +17,9 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             _unitOfWork = unitOfWork;
         }
 
-        public IEnumerable<Project> GetAllProjects()
+        public List<Project> GetAllProjects()
         {
-            return _unitOfWork.ProjectRepository.GetAllProjects();
+            return _unitOfWork.ProjectRepository.GetAll().ToList();
         }
 
         public Project GetProject(int id)

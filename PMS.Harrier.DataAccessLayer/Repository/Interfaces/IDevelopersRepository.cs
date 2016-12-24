@@ -7,10 +7,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
 {
     public interface IDeveloperRepository : IRepository<Developer>
     {
-        List<DeveloperViewModel> GetAllDevelopers();
-        DeveloperViewModel GetDeveloper(int id);
-
-        void AddDeveloper(DeveloperViewModel developerViewModel);
+        void AddDeveloper(Developer developerViewModel);
         void AddDevelopersToProject(List<ProjectDeveloperViewModel> developers);
     }
 }

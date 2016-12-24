@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.UnitOfWork;
@@ -16,19 +17,20 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             _unitOfWork = unitOfWork;
         }
 
-        public List<DeveloperViewModel> GetAllDevelopers()
+        public List<Developer> GetAllDevelopers()
         {
-            return _unitOfWork.DeveloperRepository.GetAllDevelopers();
+            return _unitOfWork.DeveloperRepository.GetAll().ToList();
         }
 
-        public DeveloperViewModel GetDeveloper(int id)
+        public Developer GetDeveloper(int id)
         {
-            return _unitOfWork.DeveloperRepository.GetDeveloper(id);
+            return _unitOfWork.DeveloperRepository.Get(id);
         }
 
-        public void AddDeveloper(DeveloperViewModel developer)
+        public void AddDeveloper(Developer developer)
         {
-           _unitOfWork.DeveloperRepository.AddDeveloper(developer);
+            throw new NotImplementedException();
+           //_unitOfWork.DeveloperRepository.AddDeveloper(developer);
         }
     }
 }

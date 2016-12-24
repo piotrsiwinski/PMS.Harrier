@@ -1,4 +1,4 @@
-﻿@model System.Collections.Generic.IEnumerable<PMS.Harrier.DataAccessLayer.Models.Project>
+﻿@model List<PMS.Harrier.WebUI.ViewModels.ProjectViewModel>
 
 @{
     ViewBag.Title = "Wszystkie projekty";
@@ -24,9 +24,10 @@
                     <td>
 
                         @Html.ActionLink("Szczegóły", "Details", new { id = p.ProjectId }, new { @class = "btn btn-info" })
-                        @Html.ActionLink("Edytuj", "Create", new { id = p.ProjectId }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Edytuj", "Edit", new { id = p.ProjectId }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Dodaj osoby", "AddDeveloperToProject", new { id = p.ProjectId }, new { @class = "btn btn-primary" })
                         @Html.ActionLink("Usuń", "Index", new { id = p.ProjectId }, new { @class = "btn btn-danger" })
-                        @Html.ActionLink("Dodaj osoby", "AddDeveloperToProject", new { id = p.ProjectId }, new { @class = "btn btn-danger" })
+                        
                     </td>
                 </tr>
             }

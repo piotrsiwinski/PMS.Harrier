@@ -6,8 +6,8 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
 {
     public interface IDeveloperLogic
     {
-        List<DeveloperViewModel> GetAllDevelopers();
-        DeveloperViewModel GetDeveloper(int id);
-        void AddDeveloper(DeveloperViewModel developer);
+        List<Developer> GetAllDevelopers();
+        Developer GetDeveloper(int id);
+        void AddDeveloper(Developer developer);
     }
 }

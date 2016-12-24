@@ -28,13 +28,14 @@
                 </li>
                 <li>
                     @Html.ActionLink("Moje projekty", "MyProjects", "Project")
-                    <a href="#"></a>
                 </li>
                 <li>
-                    <a href="#">Ustawienia</a>
+                    @Html.ActionLink("Ustawienia", "Index", "Manage")
+                    
                 </li>
                 <li>
-                    <a href="#">Wyloguj</a>
+                    
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Wyloguj</a>
                 </li>
             </ul>
         </div>

@@ -7,9 +7,9 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
-using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
+using PMS.Harrier.WebUI.ViewModels;
 
 namespace PMS.Harrier.WebUI.Controllers
 {
@@ -18,18 +18,23 @@ namespace PMS.Harrier.WebUI.Controllers
 
         private readonly IDeveloperLogic _developerLogic;
 
-        private EfDbContext db = new EfDbContext();
-
         public DevelopersController(IDeveloperLogic developerLogic)
         {
             _developerLogic = developerLogic;
+            AutoMapper.Mapper
+                .CreateMap<Developer, DeveloperViewModel>()
+                .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
+                .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
+                .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Account.Email));
+            AutoMapper.Mapper.CreateMap<DeveloperViewModel, Developer>();
+            AutoMapper.Mapper.CreateMap<ProjectDeveloperViewModel, Developer>();
         }
 
         // GET: Developers
         public ActionResult Index()
         {
             var developers = _developerLogic.GetAllDevelopers();
-            return View(developers);
+            return View(AutoMapper.Mapper.Map<List<Developer>, List<DeveloperViewModel>>(developers));
         }
 
         // GET: Developers/Details/5
@@ -45,32 +50,9 @@ namespace PMS.Harrier.WebUI.Controllers
                 return HttpNotFound();
             }
 
-            return View(developer);
+            return View(AutoMapper.Mapper.Map<Developer, DeveloperViewModel>(developer));
         }
-
-        // GET: Developers/Create
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        // POST: Developers/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "DeveloperId,ExperienceFromDate,CostPerHour,WeekAvailability")] Developer developer)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Developers.Add(developer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
-            return View(developer);
-        }
-
+        
         // GET: Developers/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -93,35 +75,9 @@ namespace PMS.Harrier.WebUI.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "DeveloperId,ExperienceFromDate,CostPerHour,WeekAvailability")] DeveloperViewModel developer)
         {
-            if (!ModelState.IsValid)
-                return View();
-            _developerLogic.AddDeveloper(developer);
-            return RedirectToAction("Index");
-        }
-
-        // GET: Developers/Delete/5
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Developer developer = db.Developers.Find(id);
-            if (developer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(developer);
-        }
-
-        // POST: Developers/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Developer developer = db.Developers.Find(id);
-            db.Developers.Remove(developer);
-            db.SaveChanges();
+//            if (!ModelState.IsValid)
+//                return View();
+//            _developerLogic.AddDeveloper(developer);
             return RedirectToAction("Index");
         }
     }

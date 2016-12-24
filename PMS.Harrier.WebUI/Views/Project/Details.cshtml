@@ -1,4 +1,4 @@
-﻿@model PMS.Harrier.DataAccessLayer.Models.Project
+﻿@model PMS.Harrier.WebUI.ViewModels.ProjectViewModel
 
 @{
     ViewBag.Title = "Szczegóły";
@@ -29,7 +29,8 @@
         <dd>
             @Html.DisplayFor(p => p.StartDate)
         </dd>
-
-
     </dl>
+</div>
+<div>
+    @Html.ActionLink("Wróć", "Index")
 </div>

@@ -6,7 +6,7 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
 {
     public interface IProjectLogic
     {
-        IEnumerable<Project> GetAllProjects();
+        List<Project> GetAllProjects();
         Project GetProject(int id);
 
         

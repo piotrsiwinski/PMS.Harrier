@@ -11,6 +11,7 @@ using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
+using PMS.Harrier.WebUI.ViewModels;
 
 namespace PMS.Harrier.WebUI.Controllers
 {
@@ -28,14 +29,73 @@ namespace PMS.Harrier.WebUI.Controllers
         {
             _projectLogic = projectLogic;
             _developerLogic = developerLogic;
+            AutoMapper.Mapper.CreateMap<Project, ProjectViewModel>();
             this.EfDbContext = new EfDbContext();
             this.UserManager = new UserManager<Account>(new UserStore<Account>(this.EfDbContext));
         }
         // GET: Project
         public ActionResult Index()
         {
-            var result = _projectLogic.GetAllProjects();
-            return View(result);
+            var projects = _projectLogic.GetAllProjects();
+            return View(AutoMapper.Mapper.Map<List<Project>, List<ProjectViewModel>>(projects));
+            
+        }
+
+        public ActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Create(Project project)
+        {
+            if (!ModelState.IsValid)
+                return View(project);
+
+            project.StartDate = DateTime.Now;
+            _projectLogic.AddNewProject(project);
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var project = _projectLogic.GetProject(id.Value);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+            return View(AutoMapper.Mapper.Map<Project, ProjectViewModel>(project));
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(ProjectViewModel project)
+        {
+            if (ModelState.IsValid)
+            {
+                //update entity in db
+                return RedirectToAction("Index");
+            }
+            return View(project);
+        }
+
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var project = _projectLogic.GetProject(id.Value);
+            if (project == null)
+            {
+                return HttpNotFound();
+            }
+
+            return View(AutoMapper.Mapper.Map<Project, ProjectViewModel>(project));
         }
 
         public ActionResult MyProjects()
@@ -47,6 +107,13 @@ namespace PMS.Harrier.WebUI.Controllers
             return View(result);
         }
 
+        public JsonResult ValidateProjectName(string projectName)
+        {
+            var result = _projectLogic.IsProjectNameAvailable(projectName);
+            return result
+                ? Json(true, JsonRequestBehavior.AllowGet)
+                : Json("Projekt o takiej nazwie już istnieje", JsonRequestBehavior.AllowGet);
+        }
         public ActionResult AddDeveloperToProject(int? id)
         {
             if (id == null)
@@ -62,8 +129,8 @@ namespace PMS.Harrier.WebUI.Controllers
                         {
                             ProjectId = project.ProjectId,
                             DeveloperId = n.DeveloperId,
-                            FirstName = n.FirstName,
-                            LastName = n.LastName
+                            //FirstName = n.FirstName,
+                            //LastName = n.LastName
                         }).ToList();
             return View(model);
         }
@@ -78,46 +145,5 @@ namespace PMS.Harrier.WebUI.Controllers
             return View(developers);
 
         }
-
-
-        public ActionResult Create()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Create(Project project)
-        {
-            if (!ModelState.IsValid)
-                return View(project);
-            
-            project.StartDate = DateTime.Now;
-            _projectLogic.AddNewProject(project);
-            return RedirectToAction("Index");
-        }
-
-        public JsonResult ValidateProjectName(string projectName)
-        {
-            var result = _projectLogic.IsProjectNameAvailable(projectName);
-            return result 
-                ? Json(true, JsonRequestBehavior.AllowGet) 
-                : Json("Projekt o takiej nazwie już istnieje", JsonRequestBehavior.AllowGet);
-        }
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            var project = _projectLogic.GetProject(id.Value);
-            if (project == null)
-            {
-                return HttpNotFound();
-            }
-            return View(project);
-        }
-
-        
     }
 }
