@@ -130,7 +130,6 @@
     <Compile Include="UnitOfWork\UnitOfWork.cs" />
     <Compile Include="ViewModels\ManageViewModels\OverviewViewModel.cs" />
     <Compile Include="ViewModels\ProjectViewModels\ProjectDeveloperViewModel.cs" />
-    <Compile Include="ViewModels\ProjectViewModels\DeveloperViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Abstract\" />

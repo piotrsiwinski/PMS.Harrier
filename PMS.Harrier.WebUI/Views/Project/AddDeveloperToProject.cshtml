@@ -1,34 +1,65 @@
-﻿@model IList<PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels.ProjectDeveloperViewModel>
+﻿@model List<PMS.Harrier.WebUI.ViewModels.AddDeveloperViewModel>
 
 @{
     ViewBag.Title = "title";
 
 }
 
-<h2>title</h2>
+<h2>Dodaj do projektu</h2>
 @using (Html.BeginForm())
 {
-    <table>
-        @for (var i = 0; i < Model.Count(); i++)
-        {
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Dodaj osoby</h4>
+
+        <table class="table table-striped table-bordered">
+            <thead>
             <tr>
-                <td>
-                    @Html.TextBoxFor(n => Model[i].FirstName)
-                </td>
-                <td>
-                    @Html.TextBoxFor(n => Model[i].LastName)
-                </td>
-                <td>
-                    @Html.TextBoxFor(n => Model[i].ProjectId)
-                </td>
-                <td>
-                    @Html.TextBoxFor(n => Model[i].DeveloperId)
-                </td>
-                <td>
-                    @Html.CheckBoxFor(n => Model[i].IsSelected)
-                </td>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>ProjectId</th>
+                <th>DeveloperId</th>
+                <th>Wybierz</th>
             </tr>
-        }
-    </table>
-    <input type="submit" value="Zapisz" />
+            </thead>
+            <tbody>
+                @for (var i = 0; i < Model.Count(); i++)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(n => Model[i].FirstName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(n => Model[i].LastName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(n => Model[i].ProjectId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(n => Model[i].DeveloperId)
+                        </td>
+                        <td>
+                            @Html.CheckBoxFor(n => Model[i].IsSelected)
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        
+        <!-- Save button -->
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Zapisz" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
 }
+
+<div class="form-group">
+    <div class="col-md-offset-2 col-md-10">
+        @Html.ActionLink("Wróć", "Index", null, new {@class = "btn btn-default"})
+        
+    </div>
+</div>
+       

@@ -125,23 +125,23 @@ namespace PMS.Harrier.WebUI.Controllers
             var model =
                 developers.Select(
                     n =>
-                        new ProjectDeveloperViewModel
+                        new AddDeveloperViewModel
                         {
                             ProjectId = project.ProjectId,
                             DeveloperId = n.DeveloperId,
-                            //FirstName = n.FirstName,
-                            //LastName = n.LastName
+                            FirstName = n.Account.FirstName,
+                            LastName = n.Account.LastName
                         }).ToList();
             return View(model);
         }
         [HttpPost]
-        public ActionResult AddDeveloperToProject(List<ProjectDeveloperViewModel> developers)
+        public ActionResult AddDeveloperToProject(List<AddDeveloperViewModel> developers)
         {
-            if (ModelState.IsValid)
-            {
-                _projectLogic.AddDevelopersToProject(developers.Where(n => n.IsSelected).ToList());
-                return RedirectToAction("Index");
-            }
+//            if (ModelState.IsValid)
+//            {
+//                _projectLogic.AddDevelopersToProject(developers.Where(n => n.IsSelected).ToList());
+//                return RedirectToAction("Index");
+//            }
             return View(developers);
 
         }
