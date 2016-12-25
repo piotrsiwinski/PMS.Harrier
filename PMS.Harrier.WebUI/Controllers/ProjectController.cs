@@ -103,10 +103,8 @@ namespace PMS.Harrier.WebUI.Controllers
         public ActionResult MyProjects()
         {
             var loggedUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
-
-            var result = loggedUser.Developer.ProjectDeveloper.Where(n => n.DeveloperId == loggedUser.Developer.DeveloperId).Select(n => n.Project);
-
-            return View(result);
+            var userProjects = _projectLogic.GetProjectsByDeveloperId(loggedUser.Developer.DeveloperId);
+            return View(AutoMapper.Mapper.Map<List<Project>, List<ProjectViewModel>>(userProjects));
         }
 
         public JsonResult ValidateProjectName(string projectName)
@@ -130,6 +128,7 @@ namespace PMS.Harrier.WebUI.Controllers
             return View(result);
         }
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult AddDeveloperToProject([Bind(Include = "DeveloperId,ProjectId, IsSelected")] List<AddDeveloperViewModel> selectedDevelopers)
         {
             if (ModelState.IsValid)

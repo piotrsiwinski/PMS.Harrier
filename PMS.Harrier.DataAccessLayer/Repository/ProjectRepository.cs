@@ -19,5 +19,10 @@ namespace PMS.Harrier.DataAccessLayer.Repository
             var result = Context.Projects.FirstOrDefault(p => p.ProjectName == name);
             return result;
         }
+
+        public List<Project> GetProjectsByDeveloperId(int id)
+        {
+            return Context.ProjectDeveloper.Where(n => n.DeveloperId == id).Select(n => n.Project).ToList();
+        }
     }
 }

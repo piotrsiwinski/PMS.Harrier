@@ -52,5 +52,10 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             _unitOfWork.ProjectDeveloperRepository.AddRange(entities);
             _unitOfWork.Complete();
         }
+
+        public List<Project> GetProjectsByDeveloperId(int id)
+        {
+            return _unitOfWork.ProjectRepository.GetProjectsByDeveloperId(id);
+        }
     }
 }

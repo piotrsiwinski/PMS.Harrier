@@ -7,5 +7,6 @@ namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
     public interface IProjectRepository : IRepository<Project>
     {
         Project GetProjectByName(string name);
+        List<Project> GetProjectsByDeveloperId(int id);
     }
 }
