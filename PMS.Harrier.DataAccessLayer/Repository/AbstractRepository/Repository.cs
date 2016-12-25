@@ -33,11 +33,15 @@ namespace PMS.Harrier.DataAccessLayer.Repository.AbstractRepository
         public void Add(TEntity entity)
         {
             Context.Set<TEntity>().Add(entity);
+            //TODO: This should do complete method in UoW
+            Context.SaveChanges();
         }
 
         public void AddRange(IEnumerable<TEntity> entities)
         {
             Context.Set<TEntity>().AddRange(entities);
+            //TODO: This should do complete method in UoW
+            Context.SaveChanges();
         }
 
         public void Remove(TEntity entity)

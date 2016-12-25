@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -20,18 +21,19 @@ namespace PMS.Harrier.WebUI.Controllers
     {
         private readonly IProjectLogic _projectLogic;
         private readonly IDeveloperLogic _developerLogic;
-       
-        protected EfDbContext EfDbContext { get; set; }
-        protected UserManager<Account> UserManager { get; set; }
-
 
         public ProjectController(IProjectLogic projectLogic, IDeveloperLogic developerLogic)
         {
             _projectLogic = projectLogic;
             _developerLogic = developerLogic;
             AutoMapper.Mapper.CreateMap<Project, ProjectViewModel>();
-            this.EfDbContext = new EfDbContext();
-            this.UserManager = new UserManager<Account>(new UserStore<Account>(this.EfDbContext));
+            AutoMapper.Mapper
+               .CreateMap<Developer, AddDeveloperViewModel>()
+               .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
+               .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
+               .ForMember(dest => dest.DeveloperId, opts => opts.MapFrom(src => src.DeveloperId));
+
+            AutoMapper.Mapper.CreateMap<AddDeveloperViewModel, ProjectDeveloper>();
         }
         // GET: Project
         public ActionResult Index()
@@ -100,10 +102,10 @@ namespace PMS.Harrier.WebUI.Controllers
 
         public ActionResult MyProjects()
         {
-            var user = this.UserManager.FindById(User.Identity.GetUserId());
-            if(user == null)
-                throw new NullReferenceException("Can't find user");
-            var result = user.Developer.ProjectDeveloper.Where(n => n.DeveloperId == user.Developer.DeveloperId).Select(n => n.Project);
+            var loggedUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            var result = loggedUser.Developer.ProjectDeveloper.Where(n => n.DeveloperId == loggedUser.Developer.DeveloperId).Select(n => n.Project);
+
             return View(result);
         }
 
@@ -120,30 +122,23 @@ namespace PMS.Harrier.WebUI.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+            
             var project = _projectLogic.GetProject(id.Value);
-            var developers = _developerLogic.GetAllDevelopers();
-            var model =
-                developers.Select(
-                    n =>
-                        new AddDeveloperViewModel
-                        {
-                            ProjectId = project.ProjectId,
-                            DeveloperId = n.DeveloperId,
-                            FirstName = n.Account.FirstName,
-                            LastName = n.Account.LastName
-                        }).ToList();
-            return View(model);
+            var result = AutoMapper.Mapper.Map<List<Developer>, List<AddDeveloperViewModel>>(_developerLogic.GetAllDevelopers());
+            result.ForEach(n => n.ProjectId = project.ProjectId);
+
+            return View(result);
         }
         [HttpPost]
-        public ActionResult AddDeveloperToProject(List<AddDeveloperViewModel> developers)
+        public ActionResult AddDeveloperToProject([Bind(Include = "DeveloperId,ProjectId, IsSelected")] List<AddDeveloperViewModel> selectedDevelopers)
         {
-//            if (ModelState.IsValid)
-//            {
-//                _projectLogic.AddDevelopersToProject(developers.Where(n => n.IsSelected).ToList());
-//                return RedirectToAction("Index");
-//            }
-            return View(developers);
-
+            if (ModelState.IsValid)
+            {
+                var result = AutoMapper.Mapper.Map<List<AddDeveloperViewModel>, List<ProjectDeveloper>>(selectedDevelopers.Where(n => n.IsSelected).ToList());
+                _projectLogic.AddDevelopersToProject(result);
+                return RedirectToAction("Index");
+            }
+            return View(selectedDevelopers);
         }
     }
 }

@@ -13,17 +13,20 @@ namespace PMS.Harrier.DataAccessLayer.UnitOfWork
             EfDbContext context,
             IProjectRepository projectRepository, 
             IAccountRepository accountRepository, 
-            IDeveloperRepository developerRepository)
+            IDeveloperRepository developerRepository, 
+            IProjectDeveloperRepository projectDeveloperRepository)
         {
             _dbContext = context;
             ProjectRepository = projectRepository;
             AccountRepository = accountRepository;
             DeveloperRepository = developerRepository;
+            ProjectDeveloperRepository = projectDeveloperRepository;
         }
 
         public IProjectRepository ProjectRepository { get; }
         public IAccountRepository AccountRepository { get; }
         public IDeveloperRepository DeveloperRepository { get; }
+        public IProjectDeveloperRepository ProjectDeveloperRepository { get; }
 
         public int Complete()
         {

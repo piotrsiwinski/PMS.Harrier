@@ -58,8 +58,9 @@ namespace PMS.Harrier.WebUI.Controllers
 
         public ActionResult AccountOverview()
         {
-            var accountDetails = _accountLogic.GetAccountDetails(User.Identity.GetUserId());
-            return View(accountDetails);
+            throw new NotImplementedException();
+            //var accountDetails = _accountLogic.GetAccountDetails(User.Identity.GetUserId());
+            //return View();
         }
 
         //

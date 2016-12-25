@@ -31,7 +31,7 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
         {
             if(project == null)
                 throw new ArgumentNullException(nameof(project));
-            _unitOfWork.ProjectRepository.AddProject(project);
+            _unitOfWork.ProjectRepository.Add(project);
             _unitOfWork.Complete();
         }
 
@@ -41,9 +41,16 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             return result == null;
         }
 
-        public void AddDevelopersToProject(List<ProjectDeveloperViewModel> developers)
+        public void AddDeveloperToProject(ProjectDeveloper entity)
         {
-            _unitOfWork.DeveloperRepository.AddDevelopersToProject(developers);
+            _unitOfWork.ProjectDeveloperRepository.Add(entity);
+            _unitOfWork.Complete();
+        }
+
+        public void AddDevelopersToProject(List<ProjectDeveloper> entities)
+        {
+            _unitOfWork.ProjectDeveloperRepository.AddRange(entities);
+            _unitOfWork.Complete();
         }
     }
 }

@@ -13,6 +13,8 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
         void AddNewProject(Project project);
 
         bool IsProjectNameAvailable(string name);
-        void AddDevelopersToProject(List<ProjectDeveloperViewModel> developers);
+
+        void AddDeveloperToProject(ProjectDeveloper entity);
+        void AddDevelopersToProject(List<ProjectDeveloper> result);
     }
 }

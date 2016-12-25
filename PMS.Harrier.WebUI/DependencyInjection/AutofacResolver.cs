@@ -46,6 +46,7 @@ namespace PMS.Harrier.WebUI.DependencyInjection
             builder.RegisterType<ProjectRepository>().As<IProjectRepository>();
             builder.RegisterType<AccountRepository>().As<IAccountRepository>();
             builder.RegisterType<DeveloperRepository>().As<IDeveloperRepository>();
+            builder.RegisterType<ProjectDeveloperRepository>().As<IProjectDeveloperRepository>();
             builder.RegisterType<UnitOfWork>().As<IUnitOfWork>();
             builder.RegisterType<ProjectLogic>().As<IProjectLogic>();
             builder.RegisterType<AccountLogic>().As<IAccountLogic>();

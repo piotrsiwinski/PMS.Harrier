@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace PMS.Harrier.DataAccessLayer.Models
 {
-    public class CustomAccount
+    public class UserAccount
     {
-        public CustomAccount()
+        public UserAccount()
         {
             this.Project = new HashSet<Project>();
         }

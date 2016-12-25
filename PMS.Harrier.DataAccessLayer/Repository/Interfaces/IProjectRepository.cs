@@ -6,10 +6,6 @@ namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
 {
     public interface IProjectRepository : IRepository<Project>
     {
-        IEnumerable<Project> GetAllProjects();
-        void GetProjectsWithProjectManagers();
-
         Project GetProjectByName(string name);
-        void AddProject(Project project);
     }
 }

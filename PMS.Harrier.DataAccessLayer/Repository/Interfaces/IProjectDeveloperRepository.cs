@@ -3,8 +3,8 @@ using PMS.Harrier.DataAccessLayer.Repository.AbstractRepository;
 
 namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
 {
-    public interface IAccountRepository : IRepository<Account>
+    public interface IProjectDeveloperRepository : IRepository<ProjectDeveloper>
     {
-
+        
     }
 }
