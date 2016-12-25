@@ -27,13 +27,14 @@ namespace PMS.Harrier.WebUI.Controllers
             _projectLogic = projectLogic;
             _developerLogic = developerLogic;
             AutoMapper.Mapper.CreateMap<Project, ProjectViewModel>();
-            AutoMapper.Mapper
-               .CreateMap<Developer, AddDeveloperViewModel>()
+            AutoMapper.Mapper.CreateMap<AddDeveloperViewModel, ProjectDeveloper>();
+            AutoMapper.Mapper.CreateMap<ProjectViewModel, Project>();
+            AutoMapper.Mapper.CreateMap<Developer, AddDeveloperViewModel>()
                .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
                .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
                .ForMember(dest => dest.DeveloperId, opts => opts.MapFrom(src => src.DeveloperId));
 
-            AutoMapper.Mapper.CreateMap<AddDeveloperViewModel, ProjectDeveloper>();
+            
         }
         // GET: Project
         public ActionResult Index()
@@ -79,7 +80,8 @@ namespace PMS.Harrier.WebUI.Controllers
         {
             if (ModelState.IsValid)
             {
-                //update entity in db
+                var entity = AutoMapper.Mapper.Map<ProjectViewModel, Project>(project);
+                _projectLogic.EditProject(entity);
                 return RedirectToAction("Index");
             }
             return View(project);

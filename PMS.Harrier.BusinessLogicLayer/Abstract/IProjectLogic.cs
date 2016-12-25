@@ -17,5 +17,6 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
         void AddDeveloperToProject(ProjectDeveloper entity);
         void AddDevelopersToProject(List<ProjectDeveloper> result);
         List<Project> GetProjectsByDeveloperId(int id);
+        void EditProject(Project entity);
     }
 }

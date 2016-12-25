@@ -15,5 +15,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository.AbstractRepository
 
         void Remove(TEntity entity);
         void RemoveRange(IEnumerable<TEntity> entities);
+
+        void Edit(TEntity entity);
     }
 }

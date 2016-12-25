@@ -8,5 +8,6 @@ namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
     {
         Project GetProjectByName(string name);
         List<Project> GetProjectsByDeveloperId(int id);
+       
     }
 }

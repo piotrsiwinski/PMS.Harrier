@@ -57,5 +57,10 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
         {
             return _unitOfWork.ProjectRepository.GetProjectsByDeveloperId(id);
         }
+
+        public void EditProject(Project entity)
+        {
+            _unitOfWork.ProjectRepository.Edit(entity);
+        }
     }
 }

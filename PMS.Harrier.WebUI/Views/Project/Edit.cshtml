@@ -14,6 +14,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new {@class = "text-danger"})
         @Html.HiddenFor(p => p.ProjectId)
+        @Html.HiddenFor(x => x.StartDate)
             
         <div class="form-group">
             @Html.LabelFor(p => p.ProjectName, new {@class = "control-label col-md-2"})
@@ -30,6 +31,8 @@
                 @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
             </div>
         </div>
+        
+        
         
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

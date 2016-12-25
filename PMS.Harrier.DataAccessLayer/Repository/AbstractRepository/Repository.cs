@@ -53,5 +53,12 @@ namespace PMS.Harrier.DataAccessLayer.Repository.AbstractRepository
         {
             Context.Set<TEntity>().RemoveRange(entities);
         }
+
+        public void Edit(TEntity entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
+            Context.SaveChanges();
+
+        }
     }
 }
