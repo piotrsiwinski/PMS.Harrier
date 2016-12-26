@@ -65,20 +65,16 @@ namespace PMS.Harrier.WebUI.Controllers
             {
                 return HttpNotFound();
             }
-            return View(developer);
+            return View(AutoMapper.Mapper.Map<Developer, DeveloperViewModel>(developer));
         }
 
-        // POST: Developers/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "DeveloperId,ExperienceFromDate,CostPerHour,WeekAvailability")] DeveloperViewModel developer)
         {
-//            if (!ModelState.IsValid)
-//                return View();
-//            _developerLogic.AddDeveloper(developer);
-            return RedirectToAction("Index");
+            throw new NotImplementedException("TODO");
+            //return RedirectToAction("Index");
         }
     }
 }

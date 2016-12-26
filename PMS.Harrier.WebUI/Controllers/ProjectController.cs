@@ -141,5 +141,21 @@ namespace PMS.Harrier.WebUI.Controllers
             }
             return View(selectedDevelopers);
         }
+
+        public ActionResult ProjectTeam(int? id)
+        {
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var developers = _developerLogic.GetAllDevelopersByProjectId(id.Value); 
+            if (developers == null)
+            {
+                return HttpNotFound();
+            }
+            
+            return View(developers);
+        }
     }
 }

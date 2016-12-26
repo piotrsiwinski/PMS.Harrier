@@ -268,6 +268,7 @@
     <Content Include="Views\Project\AddDeveloperToProject.cshtml" />
     <Content Include="Views\Project\MyProjects.cshtml" />
     <Content Include="Views\Project\Edit.cshtml" />
+    <Content Include="Views\Project\ProjectTeam.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

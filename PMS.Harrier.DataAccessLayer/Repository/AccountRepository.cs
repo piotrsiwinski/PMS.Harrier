@@ -15,7 +15,7 @@ namespace PMS.Harrier.DataAccessLayer.Repository
     {
         public AccountRepository(EfDbContext context) : base(context)
         {
-            AutoMapper.Mapper.CreateMap<Account, UserAccount>();
+            
         }
         
     }

@@ -7,6 +7,6 @@ namespace PMS.Harrier.DataAccessLayer.Repository.Interfaces
 {
     public interface IDeveloperRepository : IRepository<Developer>
     {
-        
+        List<Developer> GetAllDevelopersByProjectId(int id);
     }
 }

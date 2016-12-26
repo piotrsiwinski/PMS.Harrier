@@ -32,7 +32,7 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             if(project == null)
                 throw new ArgumentNullException(nameof(project));
             _unitOfWork.ProjectRepository.Add(project);
-            _unitOfWork.Complete();
+            //_unitOfWork.Complete();
         }
 
         public bool IsProjectNameAvailable(string name)
@@ -44,13 +44,13 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
         public void AddDeveloperToProject(ProjectDeveloper entity)
         {
             _unitOfWork.ProjectDeveloperRepository.Add(entity);
-            _unitOfWork.Complete();
+            //_unitOfWork.Complete();
         }
 
         public void AddDevelopersToProject(List<ProjectDeveloper> entities)
         {
             _unitOfWork.ProjectDeveloperRepository.AddRange(entities);
-            _unitOfWork.Complete();
+            //_unitOfWork.Complete();
         }
 
         public List<Project> GetProjectsByDeveloperId(int id)
@@ -61,6 +61,7 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
         public void EditProject(Project entity)
         {
             _unitOfWork.ProjectRepository.Edit(entity);
+            //_unitOfWork.Complete();
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using PMS.Harrier.DataAccessLayer.Concrete;
@@ -13,6 +14,11 @@ namespace PMS.Harrier.DataAccessLayer.Repository
         public DeveloperRepository(EfDbContext context) : base(context)
         {
 
+        }
+
+        public List<Developer> GetAllDevelopersByProjectId(int id)
+        {
+            return Context.ProjectDeveloper.Where(n => n.ProjectId == id).Select(n => n.Developer).ToList();
         }
     }
 }

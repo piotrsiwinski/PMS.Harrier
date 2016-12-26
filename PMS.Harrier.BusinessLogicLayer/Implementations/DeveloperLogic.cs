@@ -27,10 +27,10 @@ namespace PMS.Harrier.BusinessLogicLayer.Implementations
             return _unitOfWork.DeveloperRepository.Get(id);
         }
 
-        public void AddDeveloper(Developer developer)
+        public List<Developer> GetAllDevelopersByProjectId(int id)
         {
-            throw new NotImplementedException();
-           //_unitOfWork.DeveloperRepository.AddDeveloper(developer);
+            return _unitOfWork.DeveloperRepository.GetAllDevelopersByProjectId(id);
         }
+
     }
 }

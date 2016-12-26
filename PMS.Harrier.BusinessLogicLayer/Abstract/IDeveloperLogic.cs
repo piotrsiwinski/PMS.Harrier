@@ -8,6 +8,6 @@ namespace PMS.Harrier.BusinessLogicLayer.Abstract
     {
         List<Developer> GetAllDevelopers();
         Developer GetDeveloper(int id);
-        void AddDeveloper(Developer developer);
+        List<Developer> GetAllDevelopersByProjectId(int id);
     }
 }
