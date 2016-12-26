@@ -15,7 +15,8 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Account>().ToTable("Accounts", "dbo").Property(p => p.Id).HasColumnName("AccountId");
+            modelBuilder.Entity<Account>().ToTable("Accounts", "dbo");
+            modelBuilder.Entity<Account>().Property(p => p.Id).HasColumnName("AccountId");
             modelBuilder.Entity<Account>().HasOptional(d => d.Developer).WithRequired(p => p.Account);
             modelBuilder.Entity<Account>().HasOptional(d => d.AccountAdress).WithRequired(p => p.Account);
             base.OnModelCreating(modelBuilder);
