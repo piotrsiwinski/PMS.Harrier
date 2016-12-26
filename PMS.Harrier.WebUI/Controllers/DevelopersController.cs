@@ -21,8 +21,7 @@ namespace PMS.Harrier.WebUI.Controllers
         public DevelopersController(IDeveloperLogic developerLogic)
         {
             _developerLogic = developerLogic;
-            AutoMapper.Mapper
-                .CreateMap<Developer, DeveloperViewModel>()
+            AutoMapper.Mapper.CreateMap<Developer, DeveloperViewModel>()
                 .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
                 .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
                 .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Account.Email));

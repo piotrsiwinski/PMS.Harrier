@@ -33,8 +33,12 @@ namespace PMS.Harrier.WebUI.Controllers
                .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
                .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
                .ForMember(dest => dest.DeveloperId, opts => opts.MapFrom(src => src.DeveloperId));
+            AutoMapper.Mapper.CreateMap<Developer, DeveloperViewModel>()
+               .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
+               .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
+               .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Account.Email));
 
-            
+
         }
         // GET: Project
         public ActionResult Index()
@@ -154,8 +158,8 @@ namespace PMS.Harrier.WebUI.Controllers
             {
                 return HttpNotFound();
             }
-            
-            return View(developers);
+
+            return View(AutoMapper.Mapper.Map<List<Developer>, List<DeveloperViewModel>>(developers));
         }
     }
 }
