@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Net;
@@ -30,22 +31,23 @@ namespace PMS.Harrier.WebUI.Controllers
             AutoMapper.Mapper.CreateMap<AddDeveloperViewModel, ProjectDeveloper>();
             AutoMapper.Mapper.CreateMap<ProjectViewModel, Project>();
             AutoMapper.Mapper.CreateMap<Developer, AddDeveloperViewModel>()
-               .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
-               .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
-               .ForMember(dest => dest.DeveloperId, opts => opts.MapFrom(src => src.DeveloperId));
+                .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
+                .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
+                .ForMember(dest => dest.DeveloperId, opts => opts.MapFrom(src => src.DeveloperId));
             AutoMapper.Mapper.CreateMap<Developer, DeveloperViewModel>()
-               .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
-               .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
-               .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Account.Email));
+                .ForMember(dest => dest.FirstName, opts => opts.MapFrom(src => src.Account.FirstName))
+                .ForMember(dest => dest.LastName, opts => opts.MapFrom(src => src.Account.LastName))
+                .ForMember(dest => dest.Email, opts => opts.MapFrom(src => src.Account.Email));
 
 
         }
+
         // GET: Project
         public ActionResult Index()
         {
             var projects = _projectLogic.GetAllProjects();
             return View(AutoMapper.Mapper.Map<List<Project>, List<ProjectViewModel>>(projects));
-            
+
         }
 
         public ActionResult Create()
@@ -108,7 +110,10 @@ namespace PMS.Harrier.WebUI.Controllers
 
         public ActionResult MyProjects()
         {
-            var loggedUser = System.Web.HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>().FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var loggedUser =
+                System.Web.HttpContext.Current.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
+                    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             var userProjects = _projectLogic.GetProjectsByDeveloperId(loggedUser.Developer.DeveloperId);
             return View(AutoMapper.Mapper.Map<List<Project>, List<ProjectViewModel>>(userProjects));
         }
@@ -120,30 +125,55 @@ namespace PMS.Harrier.WebUI.Controllers
                 ? Json(true, JsonRequestBehavior.AllowGet)
                 : Json("Projekt o takiej nazwie już istnieje", JsonRequestBehavior.AllowGet);
         }
+
         public ActionResult AddDeveloperToProject(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            
+
             var project = _projectLogic.GetProject(id.Value);
-            var result = AutoMapper.Mapper.Map<List<Developer>, List<AddDeveloperViewModel>>(_developerLogic.GetAllDevelopers());
+            var result =
+                AutoMapper.Mapper.Map<List<Developer>, List<AddDeveloperViewModel>>(_developerLogic.GetAllDevelopers());
             result.ForEach(n => n.ProjectId = project.ProjectId);
 
             return View(result);
         }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AddDeveloperToProject([Bind(Include = "DeveloperId,ProjectId, IsSelected")] List<AddDeveloperViewModel> selectedDevelopers)
+        public ActionResult AddDeveloperToProject(
+            [Bind(Include = "DeveloperId,ProjectId, IsSelected, FirstName, LastName")] List<AddDeveloperViewModel> selectedDevelopers)
         {
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
+                return View(selectedDevelopers);
+            try
             {
-                var result = AutoMapper.Mapper.Map<List<AddDeveloperViewModel>, List<ProjectDeveloper>>(selectedDevelopers.Where(n => n.IsSelected).ToList());
+                var result =
+                    AutoMapper.Mapper.Map<List<AddDeveloperViewModel>, List<ProjectDeveloper>>(
+                        selectedDevelopers.Where(n => n.IsSelected).ToList());
                 _projectLogic.AddDevelopersToProject(result);
                 return RedirectToAction("Index");
             }
-            return View(selectedDevelopers);
+            catch (DbUpdateException exception)
+            {
+                ModelState.AddModelError(string.Empty, "Wybrane osoby są przypisane do wybranego projektu");
+
+                foreach (var exceptionEntry in exception.Entries)
+                {
+                    var entity = (ProjectDeveloper) exceptionEntry.Entity;
+                    ModelState.AddModelError(entity.DeveloperId.ToString(), "Ten programista jest już przypisany do tego projektu");
+                }
+
+                return View(selectedDevelopers);
+            }
+            catch (Exception e)
+            {
+                ModelState.AddModelError("Developer.Id", "Wystąpił błąd");
+                return View();
+            }
+            
         }
 
         public ActionResult ProjectTeam(int? id)

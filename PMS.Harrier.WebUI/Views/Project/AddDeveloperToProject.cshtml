@@ -9,7 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+    @Html.ValidationSummary()
 
     <div class="form-horizontal">
         <h4>Dodaj osoby</h4>
@@ -23,16 +23,19 @@
             </tr>
             </thead>
             <tbody>
-                @for (var i = 0; i < Model.Count(); i++)
+                @for (var i = 0; i < Model.Count; i++)
                 {
                     <tr>
                         @Html.HiddenFor(x => Model[i].DeveloperId)
                         @Html.HiddenFor(x => Model[i].ProjectId)
                         <td>
                             @Html.DisplayFor(n => Model[i].FirstName)
+                            @Html.HiddenFor(x => Model[i].FirstName)
                         </td>
                         <td>
                             @Html.DisplayFor(n => Model[i].LastName)
+                            @Html.HiddenFor(x => Model[i].LastName)
+                            
                         </td>
                         <td>
                             @Html.CheckBoxFor(n => Model[i].IsSelected)
