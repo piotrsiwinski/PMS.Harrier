@@ -9,6 +9,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
+    
 
     <div class="form-horizontal">
         <h4>Dodaj osoby</h4>
@@ -18,8 +19,6 @@
             <tr>
                 <th>Imię</th>
                 <th>Nazwisko</th>
-                <th>ProjectId</th>
-                <th>DeveloperId</th>
                 <th>Wybierz</th>
             </tr>
             </thead>
@@ -27,17 +26,13 @@
                 @for (var i = 0; i < Model.Count(); i++)
                 {
                     <tr>
+                        @Html.HiddenFor(x => Model[i].DeveloperId)
+                        @Html.HiddenFor(x => Model[i].ProjectId)
                         <td>
-                            @Html.EditorFor(n => Model[i].FirstName)
+                            @Html.DisplayFor(n => Model[i].FirstName)
                         </td>
                         <td>
-                            @Html.EditorFor(n => Model[i].LastName)
-                        </td>
-                        <td>
-                            @Html.EditorFor(n => Model[i].ProjectId)
-                        </td>
-                        <td>
-                            @Html.EditorFor(n => Model[i].DeveloperId)
+                            @Html.DisplayFor(n => Model[i].LastName)
                         </td>
                         <td>
                             @Html.CheckBoxFor(n => Model[i].IsSelected)
@@ -49,17 +44,10 @@
         
         <!-- Save button -->
         <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
+            <div class="col-md-offset-0 col-md-10">
                 <input type="submit" value="Zapisz" class="btn btn-default" />
+                @Html.ActionLink("Wróć", "Index", null, new { @class = "btn btn-default" })
             </div>
         </div>
     </div>
 }
-
-<div class="form-group">
-    <div class="col-md-offset-2 col-md-10">
-        @Html.ActionLink("Wróć", "Index", null, new {@class = "btn btn-default"})
-        
-    </div>
-</div>
-       
