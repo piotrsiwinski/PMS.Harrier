@@ -272,6 +272,8 @@
     <Content Include="Views\Home\_workingOnIssues.cshtml" />
     <Content Include="Views\Home\_watchingIssues.cshtml" />
     <Content Include="Views\Home\_myProjects.cshtml" />
+    <Content Include="Views\Project\UserProject.cshtml" />
+    <Content Include="Views\Project\ShowAllProjects.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
