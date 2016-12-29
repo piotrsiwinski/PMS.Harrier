@@ -1,0 +1,23 @@
+﻿@model List<PMS.Harrier.WebUI.ViewModels.ProjectViewModel>
+<h4>My projects</h4>
+<hr />
+@if (Model!= null && @Model.Any())
+{
+            foreach (var p in @Model)
+            {
+                <div style="margin: 5px">
+                    @Html.ActionLink(p.ProjectName, "Details", "Project", new { id = p.ProjectId }, new { @class = "btn btn-info" })
+                </div>
+                
+            }
+}
+else
+{
+    <div class="alert alert-warning alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Zamknij</span>
+        </button>
+        Nie jesteś przypisany do żadnego projektu!
+    </div>
+}
