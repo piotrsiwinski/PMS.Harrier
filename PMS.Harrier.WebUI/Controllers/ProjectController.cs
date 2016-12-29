@@ -114,6 +114,10 @@ namespace PMS.Harrier.WebUI.Controllers
                 System.Web.HttpContext.Current.GetOwinContext()
                     .GetUserManager<ApplicationUserManager>()
                     .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            if (loggedUser == null)
+            {
+                return RedirectToAction("Login", "Account");
+            }
             var userProjects = _projectLogic.GetProjectsByDeveloperId(loggedUser.Developer.DeveloperId);
             return View(AutoMapper.Mapper.Map<List<Project>, List<ProjectViewModel>>(userProjects));
         }
