@@ -1,0 +1,32 @@
+﻿@model PMS.Harrier.DataAccessLayer.Models.Issue
+
+@{
+    ViewBag.Title = "Szczegóły zadania";
+}
+
+<h2>Szczegóły zadania</h2>
+
+<div>
+    <h4>@Model.Title</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.LabelFor(x => x.Description)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => x.Description)
+        </dd>
+
+        <dt>
+            @Html.LabelFor(x => x.LoggedHours)
+        </dt>
+        <dd>
+            @Html.DisplayFor(x => x.LoggedHours)
+        </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Zaloguj czas", "LogTime", new { id = Model.IssueId }) |
+    @Html.ActionLink("Zakończ zadanie", "Delete", new {id = Model.IssueId}) |
+    @Html.ActionLink("Wróć", "Index")
+</p>

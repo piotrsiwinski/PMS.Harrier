@@ -31,16 +31,9 @@
                 <td>@item.Description</td>
                 <td>@Html.Action("GetDeveloperDetails", new {id = item.Reporter})</td>
                 <td>
-                    @Html.Action("GetDeveloperDetails", new { id = item.DeveloperId })
-                    @*                    @item.DeveloperId*@
-                    @*                    @if (item.Developer == null)*@
-                    @*                    {*@
-                    @*                        @Html.ActionLink("Przypisz do mnie", "AssignToMe", new { id = item.IssueId, projectId = item.ProjectId }, new { @class = "btn btn-default" })*@
-                    @*                    }*@
-                    @*                    else*@
-                    @*                    {*@
-                    @*                        @item.Developer.Account.LastName;*@
-                    @*                    }*@
+                    @(item.DeveloperId.HasValue ? Html.Action("GetDeveloperDetails", new {id = item.DeveloperId}) : Html.ActionLink("Przypisz do mnie", "AssignToMe", new {id = item.IssueId, projectId = item.ProjectId}, new {@class = "btn btn-default"}))
+
+
 
                 </td>
                 <td>

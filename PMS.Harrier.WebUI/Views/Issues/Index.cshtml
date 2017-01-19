@@ -1,0 +1,91 @@
+﻿@model IEnumerable<PMS.Harrier.DataAccessLayer.Models.Issue>
+
+@{
+   
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Index</title>
+</head>
+<body>
+@if (@Model.Any())
+{
+    
+
+<p>
+    @Html.ActionLink("Create New", "Create", null, new {@class = "btn btn-primary"})
+</p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Project.ProjectName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reporter)
+            </th>
+            <th>
+                @Html.Raw("Wykonawca")
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Title)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoggedHours)
+            </th>
+
+            <th>Operacje</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Project.ProjectName)
+                </td>
+                <td>
+                    @Html.Action("GetDeveloperDetails", "Project", new {id = item.Reporter})
+                    @*                @Html.DisplayFor(modelItem => item.Reporter)*@
+                </td>
+                <td>
+                    @Html.Action("GetDeveloperDetails", "Project", new {id = item.DeveloperId.Value})
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoggedHours)
+                </td>
+
+                <td>
+                    @*                @Html.ActionLink("Edit", "Edit", new { id=item.IssueId }) |*@
+                    @Html.ActionLink("Details", "Details", new {id = item.IssueId}) |
+                    @Html.ActionLink("Zakończ zadanie", "Delete", new {id = item.IssueId})
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+else
+{
+    <div class="alert alert-warning alert-dismissable" role="alert">
+        <button type="button" class="close" data-dismiss="alert">
+            <span aria-hidden="true">&times;</span>
+            <span class="sr-only">Zamknij</span>
+        </button>
+        Ten projekt nie ma zdefiniowanych zadań!
+    </div>
+}
+</body>
+</html>
