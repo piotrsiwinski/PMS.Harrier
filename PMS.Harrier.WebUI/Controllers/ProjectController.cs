@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using System.Net;
@@ -283,12 +284,34 @@ namespace PMS.Harrier.WebUI.Controllers
 
         public ActionResult LogTime(int id)
         {
-            throw new NotImplementedException();
+            Issue issue;
+            using (var ctx = new EfDbContext())
+            {
+                issue = ctx.Issues.Find(id);
+            }
+                return View(issue);
+        }
+        [HttpPost]
+        public ActionResult LogTime(Issue issue)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(issue);
+            }
+            using (var ctx = new EfDbContext())
+            {
+                var result = ctx.Issues.Find(issue.IssueId);
+                result.LoggedHours += issue.LoggedHours;
+                ctx.Entry(result).State = EntityState.Modified;
+                ctx.SaveChanges();
+            }
+            return RedirectToAction("IssueDetails", new {id =  issue.IssueId});
+
         }
 
         public ActionResult FinishIssue(int id)
         {
-            throw new NotImplementedException();
+            return View();
         }
         
         [ChildActionOnly]

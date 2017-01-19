@@ -5,31 +5,39 @@
 }
 
 <h2>Dostępne zadania </h2>
-@if (@ViewBag.TheResult == true)
+@if (Model.Any())
 {
-    <div class="alert alert-success">
-        Zadanie zostało przypisane do Ciebie!
-    </div>
-}
+    if (@ViewBag.TheResult == true)
+     {
+         <div class="alert alert-success">
+             Zadanie zostało przypisane do Ciebie!
+         </div>
+     }
 
-<table class="table table-bordered table-striped">
-    <thead>
-    <tr>
-        <th>Nazwa zadania</th>
-        <th>Opis</th>
-        <th>Zlecający</th>
-        <th>Wykonawca</th>
-        <th>Operacje</th>
-    </tr>
-    
-    </thead>
-    <tbody>
+    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+            <th>Nazwa zadania</th>
+            <th>Opis</th>
+            <th>Zlecający</th>
+            <th>Wykonawca</th>
+            <th>Operacje</th>
+        </tr>
+
+        </thead>
+        <tbody>
         @foreach (var item in @Model)
         {
             <tr>
                 <td>@item.Title </td>
                 <td>@item.Description</td>
-                <td>@Html.Action("GetDeveloperDetails", new {id = item.Reporter})</td>
+                <td>
+                    @if (item.Reporter > 0)
+                    {
+                        @Html.Action("GetDeveloperDetails", new { id = item.Reporter })
+                    }
+                    
+                </td>
                 <td>
                     @(item.DeveloperId.HasValue ? Html.Action("GetDeveloperDetails", new {id = item.DeveloperId}) : Html.ActionLink("Przypisz do mnie", "AssignToMe", new {id = item.IssueId, projectId = item.ProjectId}, new {@class = "btn btn-default"}))
 
@@ -42,6 +50,12 @@
 
             </tr>
         }
-    </tbody>
+        </tbody>
 
-</table>
+    </table>
+
+}
+else
+{
+    @Html.Raw("Ten projekt nie ma przypisanych zadań")
+}

@@ -280,6 +280,8 @@
     <Content Include="Views\Home\_myIssues.cshtml" />
     <Content Include="Views\Project\IssueDetails.cshtml" />
     <Content Include="Views\Project\_reporerPartial.cshtml" />
+    <Content Include="Views\Project\LogTime.cshtml" />
+    <Content Include="Views\Project\FinishIssue.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

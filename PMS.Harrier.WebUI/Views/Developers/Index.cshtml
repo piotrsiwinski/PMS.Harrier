@@ -30,9 +30,6 @@
         <th>
             @Html.DisplayNameFor(model => model.WeekAvailability)
         </th>
-        <th>
-            Dostępne operacje
-        </th>
     </tr>
 
 @foreach (var item in Model) {
@@ -54,9 +51,6 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.WeekAvailability)
-        </td>
-        <td>
-            @Html.ActionLink("Dodaj do projektu", "Index", new {id = item.DeveloperId}, new { @class = "btn btn-info" })
         </td>
     </tr>
 }
