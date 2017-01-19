@@ -30,6 +30,7 @@ namespace PMS.Harrier.DataAccessLayer.Concrete
         public virtual DbSet<Contact> Contacts { get; set; }
         public virtual DbSet<Developer> Developers { get; set; }
         public virtual DbSet<Project> Projects { get; set; }
+        public virtual DbSet<Issue> Issues { get; set; }
         public virtual DbSet<ProjectData> ProjectData { get; set; }
         public virtual DbSet<ProjectDeveloper> ProjectDeveloper { get; set; }
         public virtual DbSet<ProjectStage> ProjectStages { get; set; }

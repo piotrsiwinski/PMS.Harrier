@@ -15,6 +15,7 @@ namespace PMS.Harrier.DataAccessLayer.Models
             this.ProjectStage = new HashSet<ProjectStage>();
             this.ProjectTechnology = new HashSet<ProjectTechnology>();
             this.Stage = new HashSet<Stage>();
+            this.Issues = new HashSet<Issue>();
         }
 
         public int ProjectId { get; set; }
@@ -33,6 +34,7 @@ namespace PMS.Harrier.DataAccessLayer.Models
         public virtual ICollection<ProjectStage> ProjectStage { get; set; }
         public virtual ICollection<ProjectTechnology> ProjectTechnology { get; set; }
         public virtual ICollection<Stage> Stage { get; set; }
+        public virtual ICollection<Issue> Issues { get; set; }
 
     }
 }

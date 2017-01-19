@@ -45,7 +45,8 @@ namespace PMS.Harrier.WebUI.Controllers
                     .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
             if (loggedUser == null)
             {
-                return RedirectToAction("Login", "Account");
+                //                return RedirectToAction("Login", "Account");
+                return null;
             }
             var userProjects = _projectLogic.GetProjectsByDeveloperId(loggedUser.Developer.DeveloperId);
             return PartialView("_myProjects", AutoMapper.Mapper.Map<List<Project>, List<ProjectViewModel>>(userProjects));

@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
-using System.Linq.Expressions;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
-using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
 using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
-using PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels;
 using PMS.Harrier.WebUI.ViewModels;
 
 namespace PMS.Harrier.WebUI.Controllers
@@ -194,6 +191,71 @@ namespace PMS.Harrier.WebUI.Controllers
             }
 
             return View(AutoMapper.Mapper.Map<List<Developer>, List<DeveloperViewModel>>(developers));
+        }
+
+        [HttpGet]
+        public ActionResult CreateIssue(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return HttpNotFound();
+            }
+            var loggedUser =
+                System.Web.HttpContext.Current.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
+                    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            var model = new Issue
+            {
+                ProjectId = id.Value
+            };
+            return View(model);
+        }
+
+        [HttpPost]
+        public ActionResult CreateIssue(Issue issue)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(issue);
+            }
+            var loggedUser =
+                System.Web.HttpContext.Current.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
+                    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+
+            issue.ReporterDeveloperId = loggedUser.Developer.DeveloperId;
+            using (var ctx = new EfDbContext())
+            {
+                ctx.Issues.Add(issue);
+                ctx.SaveChanges();
+
+            }
+
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult AvailableIssues(int? id)
+        {
+            if (!id.HasValue)
+            {
+                return HttpNotFound();
+            }
+
+            var result = new List<Issue>();
+            using (var ctx = new EfDbContext())
+            {
+                var firstOrDefault = ctx.Projects.FirstOrDefault(p => p.ProjectId == id.Value);
+                if (firstOrDefault != null)
+                    result = firstOrDefault.Issues.ToList();
+                else
+                    return RedirectToAction("Index");
+            }
+            return View(result);
+        }
+
+        public ActionResult AssignToMe(int id)
+        {
+            throw new NotImplementedException();
         }
     }
 }

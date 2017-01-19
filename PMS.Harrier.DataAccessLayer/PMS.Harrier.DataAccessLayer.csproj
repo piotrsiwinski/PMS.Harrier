@@ -104,6 +104,7 @@
     <Compile Include="Initializers\CustomDbInitializer.cs" />
     <Compile Include="Models\AccountAddress.cs" />
     <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\Issue.cs" />
     <Compile Include="Models\UserAccount.cs" />
     <Compile Include="Models\Developer.cs" />
     <Compile Include="Models\Account.cs" />

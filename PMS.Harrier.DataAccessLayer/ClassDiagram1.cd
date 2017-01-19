@@ -1,0 +1,227 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" GroupingSetting="Alphabetical">
+  <Class Name="PMS.Harrier.DataAccessLayer.Concrete.EfDbContext" Collapsed="true">
+    <Position X="12.75" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAIAAAAAEQAAAEAAAAAFAAAAEAAAAUAAAAoAAAAAAwA=</HashCode>
+      <FileName>Concrete\EfDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Initializers.CustomDbInitializer" Collapsed="true">
+    <Position X="18" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Initializers\CustomDbInitializer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.Account" Collapsed="true">
+    <Position X="11" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEQACCAAAAAAEAEACAAAAIAAAAAAAAAAACCAAAg=</HashCode>
+      <FileName>Models\Account.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.AccountAddress" Collapsed="true">
+    <Position X="12.75" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAIAAAAQAAAAAIACAAAAAIAAAAAAEA=</HashCode>
+      <FileName>Models\AccountAddress.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.Contact" Collapsed="true">
+    <Position X="16.25" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAQAAAAAAAAAEAAAAAICAAAAA=</HashCode>
+      <FileName>Models\Contact.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.Developer" Collapsed="true">
+    <Position X="11" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAgACAAgAAAAAAIAIkA=</HashCode>
+      <FileName>Models\Developer.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.Project" Collapsed="true">
+    <Position X="14.5" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAgEgggAASAAEAIAgBAAAAAAAAAgAAEAgAgA=</HashCode>
+      <FileName>Models\Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.ProjectData" Collapsed="true">
+    <Position X="16.25" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACACABAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>Models\ProjectData.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.ProjectDeveloper" Collapsed="true">
+    <Position X="18" Y="3" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAACAQABIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProjectDeveloper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.ProjectStage" Collapsed="true">
+    <Position X="14.5" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAACAAgBAAAAAAAACAAAEABAAA=</HashCode>
+      <FileName>Models\ProjectStage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.ProjectTechnology" Collapsed="true">
+    <Position X="16.25" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAgAAAAAQAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\ProjectTechnologies.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.Stage" Collapsed="true">
+    <Position X="18" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gACAAAAAAIAACAAAAAAACABABAAACAQgAAAAAAABAAA=</HashCode>
+      <FileName>Models\Stage.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.StageTeam" Collapsed="true">
+    <Position X="11" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAAAAAAQAAIAAAIAAAAgAAAAABAA=</HashCode>
+      <FileName>Models\StageTeam.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.Technology" Collapsed="true">
+    <Position X="12.75" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAEAAECAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Models\Technology.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.TechnologyDeveloper" Collapsed="true">
+    <Position X="14.5" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAARAAAIAAAAAAAAQAAIAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>Models\TechnologyDeveloper.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.UserAccount" Collapsed="true">
+    <Position X="18" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEQAACAAAAAAEAEACAAAAIAAAAAAAAAAACCAAAg=</HashCode>
+      <FileName>Models\UserAccount.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Models.Metadata.ProjectMetadata" Collapsed="true">
+    <Position X="12.75" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAACAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>Models\Metadata\ProjectMetadata.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Repository.AbstractRepository.Repository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="4.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAgAAAABAAAAABAAAAAAIAAACAgAAAIAEAAA=</HashCode>
+      <FileName>Repository\AbstractRepository\Repository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Repository.AccountRepository" Collapsed="true">
+    <Position X="0.5" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\AccountRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Repository.DeveloperRepository" Collapsed="true">
+    <Position X="3" Y="3.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\DeveloperRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Repository.ProjectDeveloperRepository" Collapsed="true">
+    <Position X="5.5" Y="3.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\ProjectDeveloperRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.Repository.ProjectRepository" Collapsed="true">
+    <Position X="8.5" Y="3.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAQAA=</HashCode>
+      <FileName>Repository\ProjectRepository.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.UnitOfWork.UnitOfWork" Collapsed="true" BaseTypeListCollapsed="true">
+    <Position X="16.25" Y="5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAACAAAAIAAAQAAAAEAAAIEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitOfWork\UnitOfWork.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" Collapsed="true" />
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.ViewModels.ManageViewModels.AccountOverviewViewModel" Collapsed="true">
+    <Position X="14.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAIAAAAQAAAAAIAAAAAAAIAAAAAAAg=</HashCode>
+      <FileName>ViewModels\ManageViewModels\OverviewViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="PMS.Harrier.DataAccessLayer.ViewModels.ProjectViewModels.ProjectDeveloperViewModel" Collapsed="true">
+    <Position X="11" Y="4" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAEAAAAAAAAAQABAgAAAAAAAAAAAIAIAg=</HashCode>
+      <FileName>ViewModels\ProjectViewModels\ProjectDeveloperViewModel.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Interface Name="PMS.Harrier.DataAccessLayer.Repository.AbstractRepository.IRepository&lt;TEntity&gt;" Collapsed="true">
+    <Position X="4.5" Y="5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAABAAAAABAAAAAAIAAACAgAAAIAEAAA=</HashCode>
+      <FileName>Repository\AbstractRepository\IRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PMS.Harrier.DataAccessLayer.Repository.Interfaces.IAccountRepository" Collapsed="true">
+    <Position X="8.25" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\Interfaces\IAccountRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PMS.Harrier.DataAccessLayer.Repository.Interfaces.IDeveloperRepository" Collapsed="true">
+    <Position X="0.5" Y="6.25" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\Interfaces\IDevelopersRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PMS.Harrier.DataAccessLayer.Repository.Interfaces.IProjectDeveloperRepository" Collapsed="true">
+    <Position X="3" Y="6.25" Width="2.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Repository\Interfaces\IProjectDeveloperRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PMS.Harrier.DataAccessLayer.Repository.Interfaces.IProjectRepository" Collapsed="true">
+    <Position X="6" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAQAA=</HashCode>
+      <FileName>Repository\Interfaces\IProjectRepository.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Interface Name="PMS.Harrier.DataAccessLayer.UnitOfWork.IUnitOfWork">
+    <Position X="11" Y="6.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAQAAAAEAAAIEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>UnitOfWork\IUnitOfWork.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

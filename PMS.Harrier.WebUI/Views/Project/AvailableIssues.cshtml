@@ -1,0 +1,45 @@
+﻿@model System.Collections.Generic.List<PMS.Harrier.DataAccessLayer.Models.Issue>
+
+@{
+    ViewBag.Title = "Dostępne zadania";
+}
+
+<h2>Dostępne zadania </h2>
+<table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+        <th>Nazwa zadania</th>
+        <th>Opis</th>
+        <th>Zlecający</th>
+        <th>Wykonawca</th>
+        <th>Operacje</th>
+    </tr>
+    
+    </thead>
+    <tbody>
+        @foreach (var item in @Model)
+        {
+            <tr>
+                <td>@item.Title </td>
+                <td>@item.Description</td>
+                <td>@item.ReporterDeveloperId</td>
+                <td>
+                    @if (item.Developer == null)
+                    {
+                        @Html.ActionLink("Przypisz do mnie", "AssignToMe", new { id = item.IssueId }, new { @class = "btn btn-default" })
+                    }
+                    else
+                    {
+                        @item.Developer.Account.LastName;
+                    }
+                    
+                </td>
+                <td>
+                    @Html.ActionLink("Szczegóły", "Index", new {id = item.IssueId}, new {@class = "btn btn-default"})
+                </td>
+
+            </tr>
+        }
+    </tbody>
+
+</table>

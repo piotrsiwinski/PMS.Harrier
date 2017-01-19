@@ -274,6 +274,8 @@
     <Content Include="Views\Home\_myProjects.cshtml" />
     <Content Include="Views\Project\UserProject.cshtml" />
     <Content Include="Views\Project\ShowAllProjects.cshtml" />
+    <Content Include="Views\Project\CreateIssue.cshtml" />
+    <Content Include="Views\Project\AvailableIssues.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
