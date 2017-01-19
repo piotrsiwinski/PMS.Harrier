@@ -1,0 +1,3 @@
+﻿@model PMS.Harrier.WebUI.ViewModels.DeveloperViewModel
+
+@Html.ActionLink($"{Model.FirstName} {Model.LastName}", "Details", "Developers", new {id = Model.DeveloperId}, new {@class = "btn btn-default"})

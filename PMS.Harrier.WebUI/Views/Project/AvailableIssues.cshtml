@@ -5,6 +5,13 @@
 }
 
 <h2>Dostępne zadania </h2>
+@if (@ViewBag.TheResult == true)
+{
+    <div class="alert alert-success">
+        Zadanie zostało przypisane do Ciebie!
+    </div>
+}
+
 <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -22,20 +29,22 @@
             <tr>
                 <td>@item.Title </td>
                 <td>@item.Description</td>
-                <td>@item.ReporterDeveloperId</td>
+                <td>@Html.Action("GetDeveloperDetails", new {id = item.Reporter})</td>
                 <td>
-                    @if (item.Developer == null)
-                    {
-                        @Html.ActionLink("Przypisz do mnie", "AssignToMe", new { id = item.IssueId }, new { @class = "btn btn-default" })
-                    }
-                    else
-                    {
-                        @item.Developer.Account.LastName;
-                    }
-                    
+                    @Html.Action("GetDeveloperDetails", new { id = item.DeveloperId })
+                    @*                    @item.DeveloperId*@
+                    @*                    @if (item.Developer == null)*@
+                    @*                    {*@
+                    @*                        @Html.ActionLink("Przypisz do mnie", "AssignToMe", new { id = item.IssueId, projectId = item.ProjectId }, new { @class = "btn btn-default" })*@
+                    @*                    }*@
+                    @*                    else*@
+                    @*                    {*@
+                    @*                        @item.Developer.Account.LastName;*@
+                    @*                    }*@
+
                 </td>
                 <td>
-                    @Html.ActionLink("Szczegóły", "Index", new {id = item.IssueId}, new {@class = "btn btn-default"})
+                    @Html.ActionLink("Szczegóły", "IssueDetails", new {id = item.IssueId}, new {@class = "btn btn-default"})
                 </td>
 
             </tr>

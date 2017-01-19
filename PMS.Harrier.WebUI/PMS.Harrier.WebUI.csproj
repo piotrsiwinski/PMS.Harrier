@@ -276,6 +276,10 @@
     <Content Include="Views\Project\ShowAllProjects.cshtml" />
     <Content Include="Views\Project\CreateIssue.cshtml" />
     <Content Include="Views\Project\AvailableIssues.cshtml" />
+    <Content Include="Views\Project\_assignToMeSuccessPartial.cshtml" />
+    <Content Include="Views\Home\_myIssues.cshtml" />
+    <Content Include="Views\Project\IssueDetails.cshtml" />
+    <Content Include="Views\Project\_reporerPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

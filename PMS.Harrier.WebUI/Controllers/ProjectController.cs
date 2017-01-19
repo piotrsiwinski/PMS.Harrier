@@ -223,7 +223,7 @@ namespace PMS.Harrier.WebUI.Controllers
                     .GetUserManager<ApplicationUserManager>()
                     .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
 
-            issue.ReporterDeveloperId = loggedUser.Developer.DeveloperId;
+            issue.Reporter = loggedUser.Developer.DeveloperId;
             using (var ctx = new EfDbContext())
             {
                 ctx.Issues.Add(issue);
@@ -252,10 +252,63 @@ namespace PMS.Harrier.WebUI.Controllers
             }
             return View(result);
         }
+        
 
-        public ActionResult AssignToMe(int id)
+        public ActionResult AssignToMe(int id, int projectId)
+        {
+            var loggedUser =
+                System.Web.HttpContext.Current.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
+                    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            using (var ctx = new EfDbContext())
+            {
+                var dev = ctx.Developers.FirstOrDefault(x => x.DeveloperId == loggedUser.Developer.DeveloperId);
+                ctx.Issues.FirstOrDefault(x => x.IssueId == id).DeveloperId = dev.DeveloperId;
+                ctx.SaveChanges();
+            }
+
+            ViewBag.TheResult = true;
+            return RedirectToAction("AvailableIssues", new {id =  projectId});
+        }
+
+        public ActionResult IssueDetails(int id)
+        {
+            Issue issue;
+            using (var ctx = new EfDbContext())
+            {
+                issue = ctx.Issues.FirstOrDefault(x => x.IssueId == id);
+            }
+                return View(issue);
+        }
+
+        public ActionResult LogTime(int id)
         {
             throw new NotImplementedException();
+        }
+
+        public ActionResult FinishIssue(int id)
+        {
+            throw new NotImplementedException();
+        }
+        
+        [ChildActionOnly]
+
+        public ActionResult GetDeveloperDetails(int? id)
+        {
+            Developer developer;
+            DeveloperViewModel model;
+            using (var ctx = new EfDbContext())
+            {
+                developer = ctx.Developers.FirstOrDefault(x => x.DeveloperId == id);
+                model = new DeveloperViewModel()
+                {
+                    DeveloperId = id.Value,
+                    FirstName = developer.Account.FirstName,
+                    LastName = developer.Account.LastName
+                };
+            }
+
+            return PartialView("_reporerPartial", model);
         }
     }
 }

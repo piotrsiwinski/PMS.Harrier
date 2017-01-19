@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using PMS.Harrier.BusinessLogicLayer.Abstract;
+using PMS.Harrier.DataAccessLayer.Concrete;
 using PMS.Harrier.DataAccessLayer.Models;
 using PMS.Harrier.WebUI.ViewModels;
 
@@ -50,6 +51,21 @@ namespace PMS.Harrier.WebUI.Controllers
             }
             var userProjects = _projectLogic.GetProjectsByDeveloperId(loggedUser.Developer.DeveloperId);
             return PartialView("_myProjects", AutoMapper.Mapper.Map<List<Project>, List<ProjectViewModel>>(userProjects));
+        }
+
+        public ActionResult MyIssues()
+        {
+            var loggedUser =
+                System.Web.HttpContext.Current.GetOwinContext()
+                    .GetUserManager<ApplicationUserManager>()
+                    .FindById(System.Web.HttpContext.Current.User.Identity.GetUserId());
+            if (loggedUser == null)
+            {
+                //                return RedirectToAction("Login", "Account");
+                return null;
+            }
+
+            return PartialView("_myIssues", loggedUser.Developer.Issues.ToList());
         }
     }
 }

@@ -23,10 +23,10 @@
                     <td>@p.StartDate</td>
                     <td>
 
-                        @Html.ActionLink("Szczegóły", "Details", new { id = p.ProjectId }, new { @class = "btn btn-info" })
+                        @Html.ActionLink("Szczegóły", "Details", new { id = p.ProjectId }, new { @class = "btn btn-default" })
                         @Html.ActionLink("Edytuj", "Edit", new { id = p.ProjectId }, new { @class = "btn btn-default" })
-                        @Html.ActionLink("Zobacz zespół", "ProjectTeam", new { id = p.ProjectId }, new { @class = "btn btn-danger" })
-                        @Html.ActionLink("Dodaj osoby", "AddDeveloperToProject", new { id = p.ProjectId }, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Zobacz zespół", "ProjectTeam", new { id = p.ProjectId }, new { @class = "btn btn-default" })
+                        @Html.ActionLink("Dodaj osoby", "AddDeveloperToProject", new { id = p.ProjectId }, new { @class = "btn btn-default" })
                         @Html.ActionLink("Usuń", "Index", new { id = p.ProjectId }, new { @class = "btn btn-danger" })
 
 
